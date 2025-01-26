@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\repo3luis-3luis986067353\\CSHARP_EFSRTII\\Panaderia\\",
+  "WorkspaceRootPath": "C:\\REPOSITORIOS GITHUB\\CSHARP_EFSRTII\\Panaderia\\",
   "Documents": [],
   "DocumentGroupContainers": [
     {
@@ -18,10 +18,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
             }
           ]
         }
