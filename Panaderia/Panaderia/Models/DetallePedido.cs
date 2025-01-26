@@ -7,10 +7,12 @@ using System.Web;
 
 namespace Panaderia.Models
 {
+  
+
     public class DetallePedido
     {
         [Key]
-        public int IdDetalle { get; set; }
+        public int IdDetallePedido { get; set; }
 
         [ForeignKey("Pedido")]
         public int IdPedido { get; set; }
@@ -27,9 +29,10 @@ namespace Panaderia.Models
         [Required]
         public decimal Subtotal { get; set; }
 
+        // Relaciones
         public Pedido Pedido { get; set; }
-
         public Producto Producto { get; set; }
     }
+
 
 }

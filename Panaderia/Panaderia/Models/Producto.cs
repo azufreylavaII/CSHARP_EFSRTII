@@ -7,15 +7,21 @@ using System.Web;
 
 namespace Panaderia.Models
 {
+  
+
     public class Producto
     {
         [Key]
         public int IdProducto { get; set; }
 
+        [ForeignKey("Categoria")]
+        public int IdCategoria { get; set; }
+
         [Required]
-        [MaxLength(100)]
+        [MaxLength(150)]
         public string Nombre { get; set; }
 
+        [MaxLength(255)]
         public string Descripcion { get; set; }
 
         [Required]
@@ -24,12 +30,11 @@ namespace Panaderia.Models
         [Required]
         public int Stock { get; set; }
 
-        [MaxLength(255)]
-        public string ImagenUrl { get; set; }
+        [Required]
+        public bool Estado { get; set; }
 
-        [ForeignKey("Categoria")]
-        public int? IdCategoria { get; set; }
-
+        // Relación con Categoría
         public Categoria Categoria { get; set; }
     }
+
 }

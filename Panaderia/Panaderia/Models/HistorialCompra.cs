@@ -7,6 +7,7 @@ using System.Web;
 
 namespace Panaderia.Models
 {
+ 
     public class HistorialCompra
     {
         [Key]
@@ -18,10 +19,19 @@ namespace Panaderia.Models
         [ForeignKey("Pedido")]
         public int IdPedido { get; set; }
 
+        [Required]
         public DateTime FechaCompra { get; set; }
 
-        public Usuario Usuario { get; set; }
+        [Required]
+        public decimal MontoTotal { get; set; }
 
+        [Required]
+        [MaxLength(50)]
+        public string Estado { get; set; }
+
+        // Relaciones
+        public Usuario Usuario { get; set; }
         public Pedido Pedido { get; set; }
     }
+
 }
