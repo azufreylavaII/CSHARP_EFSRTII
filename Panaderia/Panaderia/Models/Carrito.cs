@@ -5,10 +5,7 @@ using System.Web;
 
 namespace Panaderia.Models
 {
-    public class Class1
+    public class Carrito
     {
-        public int variable { get; set; }
-
-        public int prueba { get; set; }
     }
 }
