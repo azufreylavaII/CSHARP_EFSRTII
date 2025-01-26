@@ -3,31 +3,63 @@
   "WorkspaceRootPath": "C:\\Users\\PortableWin\\source\\repos\\CSHARP_EFSRTII\\Panaderia\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{EEBF4E4B-7569-4231-AF49-702C909AFD45}|Panaderia\\Panaderia.csproj|c:\\users\\portablewin\\source\\repos\\csharp_efsrtii\\panaderia\\panaderia\\models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EEBF4E4B-7569-4231-AF49-702C909AFD45}|Panaderia\\Panaderia.csproj|solutionrelative:panaderia\\models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EEBF4E4B-7569-4231-AF49-702C909AFD45}|Panaderia\\Panaderia.csproj|c:\\users\\portablewin\\source\\repos\\csharp_efsrtii\\panaderia\\panaderia\\controllers\\productoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EEBF4E4B-7569-4231-AF49-702C909AFD45}|Panaderia\\Panaderia.csproj|solutionrelative:panaderia\\controllers\\productoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EEBF4E4B-7569-4231-AF49-702C909AFD45}|Panaderia\\Panaderia.csproj|c:\\users\\portablewin\\source\\repos\\csharp_efsrtii\\panaderia\\panaderia\\models\\historialcompra.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EEBF4E4B-7569-4231-AF49-702C909AFD45}|Panaderia\\Panaderia.csproj|solutionrelative:panaderia\\models\\historialcompra.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EEBF4E4B-7569-4231-AF49-702C909AFD45}|Panaderia\\Panaderia.csproj|C:\\Users\\PortableWin\\source\\repos\\CSHARP_EFSRTII\\Panaderia\\panaderia\\controllers\\pedidoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EEBF4E4B-7569-4231-AF49-702C909AFD45}|Panaderia\\Panaderia.csproj|solutionrelative:panaderia\\controllers\\pedidoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EEBF4E4B-7569-4231-AF49-702C909AFD45}|Panaderia\\Panaderia.csproj|c:\\users\\portablewin\\source\\repos\\csharp_efsrtii\\panaderia\\panaderia\\models\\carrito.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EEBF4E4B-7569-4231-AF49-702C909AFD45}|Panaderia\\Panaderia.csproj|solutionrelative:panaderia\\models\\carrito.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EEBF4E4B-7569-4231-AF49-702C909AFD45}|Panaderia\\Panaderia.csproj|C:\\Users\\PortableWin\\source\\repos\\CSHARP_EFSRTII\\Panaderia\\panaderia\\controllers\\categoriascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EEBF4E4B-7569-4231-AF49-702C909AFD45}|Panaderia\\Panaderia.csproj|solutionrelative:panaderia\\controllers\\categoriascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EEBF4E4B-7569-4231-AF49-702C909AFD45}|Panaderia\\Panaderia.csproj|c:\\users\\portablewin\\source\\repos\\csharp_efsrtii\\panaderia\\panaderia\\models\\detallepedido.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EEBF4E4B-7569-4231-AF49-702C909AFD45}|Panaderia\\Panaderia.csproj|solutionrelative:panaderia\\models\\detallepedido.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EEBF4E4B-7569-4231-AF49-702C909AFD45}|Panaderia\\Panaderia.csproj|C:\\Users\\PortableWin\\source\\repos\\CSHARP_EFSRTII\\Panaderia\\panaderia\\controllers\\historialcomprascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EEBF4E4B-7569-4231-AF49-702C909AFD45}|Panaderia\\Panaderia.csproj|solutionrelative:panaderia\\controllers\\historialcomprascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EEBF4E4B-7569-4231-AF49-702C909AFD45}|Panaderia\\Panaderia.csproj|c:\\users\\portablewin\\source\\repos\\csharp_efsrtii\\panaderia\\panaderia\\models\\pedido.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{EEBF4E4B-7569-4231-AF49-702C909AFD45}|Panaderia\\Panaderia.csproj|C:\\Users\\PortableWin\\source\\repos\\CSHARP_EFSRTII\\Panaderia\\panaderia\\controllers\\detallespedidocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EEBF4E4B-7569-4231-AF49-702C909AFD45}|Panaderia\\Panaderia.csproj|solutionrelative:panaderia\\controllers\\detallespedidocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EEBF4E4B-7569-4231-AF49-702C909AFD45}|Panaderia\\Panaderia.csproj|C:\\Users\\PortableWin\\source\\repos\\CSHARP_EFSRTII\\Panaderia\\panaderia\\controllers\\carritoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EEBF4E4B-7569-4231-AF49-702C909AFD45}|Panaderia\\Panaderia.csproj|solutionrelative:panaderia\\controllers\\carritoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EEBF4E4B-7569-4231-AF49-702C909AFD45}|Panaderia\\Panaderia.csproj|C:\\Users\\PortableWin\\source\\repos\\CSHARP_EFSRTII\\Panaderia\\panaderia\\controllers\\usuarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EEBF4E4B-7569-4231-AF49-702C909AFD45}|Panaderia\\Panaderia.csproj|solutionrelative:panaderia\\controllers\\usuarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EEBF4E4B-7569-4231-AF49-702C909AFD45}|Panaderia\\Panaderia.csproj|C:\\Users\\PortableWin\\source\\repos\\CSHARP_EFSRTII\\Panaderia\\panaderia\\app_start\\routeconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EEBF4E4B-7569-4231-AF49-702C909AFD45}|Panaderia\\Panaderia.csproj|solutionrelative:panaderia\\app_start\\routeconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EEBF4E4B-7569-4231-AF49-702C909AFD45}|Panaderia\\Panaderia.csproj|C:\\Users\\PortableWin\\source\\repos\\CSHARP_EFSRTII\\Panaderia\\panaderia\\models\\pedido.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EEBF4E4B-7569-4231-AF49-702C909AFD45}|Panaderia\\Panaderia.csproj|solutionrelative:panaderia\\models\\pedido.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EEBF4E4B-7569-4231-AF49-702C909AFD45}|Panaderia\\Panaderia.csproj|c:\\users\\portablewin\\source\\repos\\csharp_efsrtii\\panaderia\\panaderia\\models\\producto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{EEBF4E4B-7569-4231-AF49-702C909AFD45}|Panaderia\\Panaderia.csproj|C:\\Users\\PortableWin\\source\\repos\\CSHARP_EFSRTII\\Panaderia\\panaderia\\models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EEBF4E4B-7569-4231-AF49-702C909AFD45}|Panaderia\\Panaderia.csproj|solutionrelative:panaderia\\models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EEBF4E4B-7569-4231-AF49-702C909AFD45}|Panaderia\\Panaderia.csproj|C:\\Users\\PortableWin\\source\\repos\\CSHARP_EFSRTII\\Panaderia\\panaderia\\models\\historialcompra.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EEBF4E4B-7569-4231-AF49-702C909AFD45}|Panaderia\\Panaderia.csproj|solutionrelative:panaderia\\models\\historialcompra.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EEBF4E4B-7569-4231-AF49-702C909AFD45}|Panaderia\\Panaderia.csproj|C:\\Users\\PortableWin\\source\\repos\\CSHARP_EFSRTII\\Panaderia\\panaderia\\models\\carrito.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EEBF4E4B-7569-4231-AF49-702C909AFD45}|Panaderia\\Panaderia.csproj|solutionrelative:panaderia\\models\\carrito.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EEBF4E4B-7569-4231-AF49-702C909AFD45}|Panaderia\\Panaderia.csproj|C:\\Users\\PortableWin\\source\\repos\\CSHARP_EFSRTII\\Panaderia\\panaderia\\models\\detallepedido.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EEBF4E4B-7569-4231-AF49-702C909AFD45}|Panaderia\\Panaderia.csproj|solutionrelative:panaderia\\models\\detallepedido.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EEBF4E4B-7569-4231-AF49-702C909AFD45}|Panaderia\\Panaderia.csproj|C:\\Users\\PortableWin\\source\\repos\\CSHARP_EFSRTII\\Panaderia\\panaderia\\models\\producto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EEBF4E4B-7569-4231-AF49-702C909AFD45}|Panaderia\\Panaderia.csproj|solutionrelative:panaderia\\models\\producto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EEBF4E4B-7569-4231-AF49-702C909AFD45}|Panaderia\\Panaderia.csproj|c:\\users\\portablewin\\source\\repos\\csharp_efsrtii\\panaderia\\panaderia\\models\\categoria.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{EEBF4E4B-7569-4231-AF49-702C909AFD45}|Panaderia\\Panaderia.csproj|C:\\Users\\PortableWin\\source\\repos\\CSHARP_EFSRTII\\Panaderia\\panaderia\\models\\categoria.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EEBF4E4B-7569-4231-AF49-702C909AFD45}|Panaderia\\Panaderia.csproj|solutionrelative:panaderia\\models\\categoria.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -38,7 +70,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -53,99 +85,185 @@
               "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Usuario.cs",
-              "DocumentMoniker": "C:\\Users\\PortableWin\\source\\repos\\CSHARP_EFSRTII\\Panaderia\\Panaderia\\Models\\Usuario.cs",
-              "RelativeDocumentMoniker": "Panaderia\\Models\\Usuario.cs",
-              "ToolTip": "C:\\Users\\PortableWin\\source\\repos\\CSHARP_EFSRTII\\Panaderia\\Panaderia\\Models\\Usuario.cs",
-              "RelativeToolTip": "Panaderia\\Models\\Usuario.cs",
+              "Title": "ProductosController.cs",
+              "DocumentMoniker": "C:\\Users\\PortableWin\\source\\repos\\CSHARP_EFSRTII\\Panaderia\\Panaderia\\Controllers\\ProductosController.cs",
+              "RelativeDocumentMoniker": "Panaderia\\Controllers\\ProductosController.cs",
+              "ToolTip": "C:\\Users\\PortableWin\\source\\repos\\CSHARP_EFSRTII\\Panaderia\\Panaderia\\Controllers\\ProductosController.cs",
+              "RelativeToolTip": "Panaderia\\Controllers\\ProductosController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-26T01:36:11.963Z",
+              "WhenOpened": "2025-01-26T15:15:38.739Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "PedidosController.cs",
+              "DocumentMoniker": "C:\\Users\\PortableWin\\source\\repos\\CSHARP_EFSRTII\\Panaderia\\Panaderia\\Controllers\\PedidosController.cs",
+              "RelativeDocumentMoniker": "Panaderia\\Controllers\\PedidosController.cs",
+              "ToolTip": "C:\\Users\\PortableWin\\source\\repos\\CSHARP_EFSRTII\\Panaderia\\Panaderia\\Controllers\\PedidosController.cs",
+              "RelativeToolTip": "Panaderia\\Controllers\\PedidosController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-26T15:14:55.842Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CategoriasController.cs",
+              "DocumentMoniker": "C:\\Users\\PortableWin\\source\\repos\\CSHARP_EFSRTII\\Panaderia\\Panaderia\\Controllers\\CategoriasController.cs",
+              "RelativeDocumentMoniker": "Panaderia\\Controllers\\CategoriasController.cs",
+              "ToolTip": "C:\\Users\\PortableWin\\source\\repos\\CSHARP_EFSRTII\\Panaderia\\Panaderia\\Controllers\\CategoriasController.cs",
+              "RelativeToolTip": "Panaderia\\Controllers\\CategoriasController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-26T15:14:36.874Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "HistorialComprasController.cs",
+              "DocumentMoniker": "C:\\Users\\PortableWin\\source\\repos\\CSHARP_EFSRTII\\Panaderia\\Panaderia\\Controllers\\HistorialComprasController.cs",
+              "RelativeDocumentMoniker": "Panaderia\\Controllers\\HistorialComprasController.cs",
+              "ToolTip": "C:\\Users\\PortableWin\\source\\repos\\CSHARP_EFSRTII\\Panaderia\\Panaderia\\Controllers\\HistorialComprasController.cs",
+              "RelativeToolTip": "Panaderia\\Controllers\\HistorialComprasController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-26T15:14:09.44Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DetallesPedidoController.cs",
+              "DocumentMoniker": "C:\\Users\\PortableWin\\source\\repos\\CSHARP_EFSRTII\\Panaderia\\Panaderia\\Controllers\\DetallesPedidoController.cs",
+              "RelativeDocumentMoniker": "Panaderia\\Controllers\\DetallesPedidoController.cs",
+              "ToolTip": "C:\\Users\\PortableWin\\source\\repos\\CSHARP_EFSRTII\\Panaderia\\Panaderia\\Controllers\\DetallesPedidoController.cs",
+              "RelativeToolTip": "Panaderia\\Controllers\\DetallesPedidoController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-26T15:12:27.889Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CarritosController.cs",
+              "DocumentMoniker": "C:\\Users\\PortableWin\\source\\repos\\CSHARP_EFSRTII\\Panaderia\\Panaderia\\Controllers\\CarritosController.cs",
+              "RelativeDocumentMoniker": "Panaderia\\Controllers\\CarritosController.cs",
+              "ToolTip": "C:\\Users\\PortableWin\\source\\repos\\CSHARP_EFSRTII\\Panaderia\\Panaderia\\Controllers\\CarritosController.cs",
+              "RelativeToolTip": "Panaderia\\Controllers\\CarritosController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-26T15:10:28.243Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "UsuariosController.cs",
+              "DocumentMoniker": "C:\\Users\\PortableWin\\source\\repos\\CSHARP_EFSRTII\\Panaderia\\Panaderia\\Controllers\\UsuariosController.cs",
+              "RelativeDocumentMoniker": "Panaderia\\Controllers\\UsuariosController.cs",
+              "ToolTip": "C:\\Users\\PortableWin\\source\\repos\\CSHARP_EFSRTII\\Panaderia\\Panaderia\\Controllers\\UsuariosController.cs",
+              "RelativeToolTip": "Panaderia\\Controllers\\UsuariosController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-26T15:10:02.706Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "RouteConfig.cs",
+              "DocumentMoniker": "C:\\Users\\PortableWin\\source\\repos\\CSHARP_EFSRTII\\Panaderia\\Panaderia\\App_Start\\RouteConfig.cs",
+              "RelativeDocumentMoniker": "Panaderia\\App_Start\\RouteConfig.cs",
+              "ToolTip": "C:\\Users\\PortableWin\\source\\repos\\CSHARP_EFSRTII\\Panaderia\\Panaderia\\App_Start\\RouteConfig.cs",
+              "RelativeToolTip": "Panaderia\\App_Start\\RouteConfig.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-26T02:54:55.935Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Usuario.cs",
+              "DocumentMoniker": "C:\\Users\\PortableWin\\source\\repos\\CSHARP_EFSRTII\\Panaderia\\Panaderia\\Models\\Usuario.cs",
+              "RelativeDocumentMoniker": "Panaderia\\Models\\Usuario.cs",
+              "ToolTip": "C:\\Users\\PortableWin\\source\\repos\\CSHARP_EFSRTII\\Panaderia\\Panaderia\\Models\\Usuario.cs",
+              "RelativeToolTip": "Panaderia\\Models\\Usuario.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAcwCUAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-26T01:36:11.963Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "HistorialCompra.cs",
               "DocumentMoniker": "C:\\Users\\PortableWin\\source\\repos\\CSHARP_EFSRTII\\Panaderia\\Panaderia\\Models\\HistorialCompra.cs",
               "RelativeDocumentMoniker": "Panaderia\\Models\\HistorialCompra.cs",
               "ToolTip": "C:\\Users\\PortableWin\\source\\repos\\CSHARP_EFSRTII\\Panaderia\\Panaderia\\Models\\HistorialCompra.cs",
               "RelativeToolTip": "Panaderia\\Models\\HistorialCompra.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-26T01:40:35.253Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-26T01:40:35.253Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 11,
               "Title": "Carrito.cs",
               "DocumentMoniker": "C:\\Users\\PortableWin\\source\\repos\\CSHARP_EFSRTII\\Panaderia\\Panaderia\\Models\\Carrito.cs",
               "RelativeDocumentMoniker": "Panaderia\\Models\\Carrito.cs",
               "ToolTip": "C:\\Users\\PortableWin\\source\\repos\\CSHARP_EFSRTII\\Panaderia\\Panaderia\\Models\\Carrito.cs",
               "RelativeToolTip": "Panaderia\\Models\\Carrito.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-26T01:39:26.5Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-26T01:39:26.5Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 12,
               "Title": "DetallePedido.cs",
               "DocumentMoniker": "C:\\Users\\PortableWin\\source\\repos\\CSHARP_EFSRTII\\Panaderia\\Panaderia\\Models\\DetallePedido.cs",
               "RelativeDocumentMoniker": "Panaderia\\Models\\DetallePedido.cs",
               "ToolTip": "C:\\Users\\PortableWin\\source\\repos\\CSHARP_EFSRTII\\Panaderia\\Panaderia\\Models\\DetallePedido.cs",
               "RelativeToolTip": "Panaderia\\Models\\DetallePedido.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-26T01:39:10.048Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-26T01:39:10.048Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 8,
               "Title": "Pedido.cs",
               "DocumentMoniker": "C:\\Users\\PortableWin\\source\\repos\\CSHARP_EFSRTII\\Panaderia\\Panaderia\\Models\\Pedido.cs",
               "RelativeDocumentMoniker": "Panaderia\\Models\\Pedido.cs",
               "ToolTip": "C:\\Users\\PortableWin\\source\\repos\\CSHARP_EFSRTII\\Panaderia\\Panaderia\\Models\\Pedido.cs",
               "RelativeToolTip": "Panaderia\\Models\\Pedido.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAB0AAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-26T01:38:26.733Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-26T01:38:26.733Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 13,
               "Title": "Producto.cs",
               "DocumentMoniker": "C:\\Users\\PortableWin\\source\\repos\\CSHARP_EFSRTII\\Panaderia\\Panaderia\\Models\\Producto.cs",
               "RelativeDocumentMoniker": "Panaderia\\Models\\Producto.cs",
               "ToolTip": "C:\\Users\\PortableWin\\source\\repos\\CSHARP_EFSRTII\\Panaderia\\Panaderia\\Models\\Producto.cs",
               "RelativeToolTip": "Panaderia\\Models\\Producto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAACEAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-26T01:38:14.208Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-26T01:38:14.208Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 14,
               "Title": "Categoria.cs",
               "DocumentMoniker": "C:\\Users\\PortableWin\\source\\repos\\CSHARP_EFSRTII\\Panaderia\\Panaderia\\Models\\Categoria.cs",
               "RelativeDocumentMoniker": "Panaderia\\Models\\Categoria.cs",
               "ToolTip": "C:\\Users\\PortableWin\\source\\repos\\CSHARP_EFSRTII\\Panaderia\\Panaderia\\Models\\Categoria.cs",
               "RelativeToolTip": "Panaderia\\Models\\Categoria.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-26T01:37:49.251Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-26T01:37:49.251Z"
             }
           ]
         }
