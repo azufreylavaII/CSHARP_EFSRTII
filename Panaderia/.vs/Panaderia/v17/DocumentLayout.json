@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\PortableWin\\source\\repos\\CSHARP_EFSRTII\\Panaderia\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{EEBF4E4B-7569-4231-AF49-702C909AFD45}|Panaderia\\Panaderia.csproj|c:\\users\\portablewin\\source\\repos\\csharp_efsrtii\\panaderia\\panaderia\\controllers\\pagoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EEBF4E4B-7569-4231-AF49-702C909AFD45}|Panaderia\\Panaderia.csproj|solutionrelative:panaderia\\controllers\\pagoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{EEBF4E4B-7569-4231-AF49-702C909AFD45}|Panaderia\\Panaderia.csproj|c:\\users\\portablewin\\source\\repos\\csharp_efsrtii\\panaderia\\panaderia\\controllers\\productoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EEBF4E4B-7569-4231-AF49-702C909AFD45}|Panaderia\\Panaderia.csproj|solutionrelative:panaderia\\controllers\\productoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -87,6 +91,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "PagosController.cs",
+              "DocumentMoniker": "C:\\Users\\PortableWin\\source\\repos\\CSHARP_EFSRTII\\Panaderia\\Panaderia\\Controllers\\PagosController.cs",
+              "RelativeDocumentMoniker": "Panaderia\\Controllers\\PagosController.cs",
+              "ToolTip": "C:\\Users\\PortableWin\\source\\repos\\CSHARP_EFSRTII\\Panaderia\\Panaderia\\Controllers\\PagosController.cs",
+              "RelativeToolTip": "Panaderia\\Controllers\\PagosController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-26T16:28:28.929Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "ProductosController.cs",
               "DocumentMoniker": "C:\\Users\\PortableWin\\source\\repos\\CSHARP_EFSRTII\\Panaderia\\Panaderia\\Controllers\\ProductosController.cs",
               "RelativeDocumentMoniker": "Panaderia\\Controllers\\ProductosController.cs",
@@ -99,7 +116,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "PedidosController.cs",
               "DocumentMoniker": "C:\\Users\\PortableWin\\source\\repos\\CSHARP_EFSRTII\\Panaderia\\Panaderia\\Controllers\\PedidosController.cs",
               "RelativeDocumentMoniker": "Panaderia\\Controllers\\PedidosController.cs",
@@ -111,7 +128,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "CategoriasController.cs",
               "DocumentMoniker": "C:\\Users\\PortableWin\\source\\repos\\CSHARP_EFSRTII\\Panaderia\\Panaderia\\Controllers\\CategoriasController.cs",
               "RelativeDocumentMoniker": "Panaderia\\Controllers\\CategoriasController.cs",
@@ -123,7 +140,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "HistorialComprasController.cs",
               "DocumentMoniker": "C:\\Users\\PortableWin\\source\\repos\\CSHARP_EFSRTII\\Panaderia\\Panaderia\\Controllers\\HistorialComprasController.cs",
               "RelativeDocumentMoniker": "Panaderia\\Controllers\\HistorialComprasController.cs",
@@ -135,7 +152,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "DetallesPedidoController.cs",
               "DocumentMoniker": "C:\\Users\\PortableWin\\source\\repos\\CSHARP_EFSRTII\\Panaderia\\Panaderia\\Controllers\\DetallesPedidoController.cs",
               "RelativeDocumentMoniker": "Panaderia\\Controllers\\DetallesPedidoController.cs",
@@ -147,7 +164,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "CarritosController.cs",
               "DocumentMoniker": "C:\\Users\\PortableWin\\source\\repos\\CSHARP_EFSRTII\\Panaderia\\Panaderia\\Controllers\\CarritosController.cs",
               "RelativeDocumentMoniker": "Panaderia\\Controllers\\CarritosController.cs",
@@ -159,7 +176,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "UsuariosController.cs",
               "DocumentMoniker": "C:\\Users\\PortableWin\\source\\repos\\CSHARP_EFSRTII\\Panaderia\\Panaderia\\Controllers\\UsuariosController.cs",
               "RelativeDocumentMoniker": "Panaderia\\Controllers\\UsuariosController.cs",
@@ -171,7 +188,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "RouteConfig.cs",
               "DocumentMoniker": "C:\\Users\\PortableWin\\source\\repos\\CSHARP_EFSRTII\\Panaderia\\Panaderia\\App_Start\\RouteConfig.cs",
               "RelativeDocumentMoniker": "Panaderia\\App_Start\\RouteConfig.cs",
@@ -183,7 +200,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "Usuario.cs",
               "DocumentMoniker": "C:\\Users\\PortableWin\\source\\repos\\CSHARP_EFSRTII\\Panaderia\\Panaderia\\Models\\Usuario.cs",
               "RelativeDocumentMoniker": "Panaderia\\Models\\Usuario.cs",
@@ -195,7 +212,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "HistorialCompra.cs",
               "DocumentMoniker": "C:\\Users\\PortableWin\\source\\repos\\CSHARP_EFSRTII\\Panaderia\\Panaderia\\Models\\HistorialCompra.cs",
               "RelativeDocumentMoniker": "Panaderia\\Models\\HistorialCompra.cs",
@@ -207,7 +224,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "Carrito.cs",
               "DocumentMoniker": "C:\\Users\\PortableWin\\source\\repos\\CSHARP_EFSRTII\\Panaderia\\Panaderia\\Models\\Carrito.cs",
               "RelativeDocumentMoniker": "Panaderia\\Models\\Carrito.cs",
@@ -219,7 +236,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "DetallePedido.cs",
               "DocumentMoniker": "C:\\Users\\PortableWin\\source\\repos\\CSHARP_EFSRTII\\Panaderia\\Panaderia\\Models\\DetallePedido.cs",
               "RelativeDocumentMoniker": "Panaderia\\Models\\DetallePedido.cs",
@@ -231,7 +248,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "Pedido.cs",
               "DocumentMoniker": "C:\\Users\\PortableWin\\source\\repos\\CSHARP_EFSRTII\\Panaderia\\Panaderia\\Models\\Pedido.cs",
               "RelativeDocumentMoniker": "Panaderia\\Models\\Pedido.cs",
@@ -243,7 +260,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "Producto.cs",
               "DocumentMoniker": "C:\\Users\\PortableWin\\source\\repos\\CSHARP_EFSRTII\\Panaderia\\Panaderia\\Models\\Producto.cs",
               "RelativeDocumentMoniker": "Panaderia\\Models\\Producto.cs",
@@ -255,7 +272,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "Categoria.cs",
               "DocumentMoniker": "C:\\Users\\PortableWin\\source\\repos\\CSHARP_EFSRTII\\Panaderia\\Panaderia\\Models\\Categoria.cs",
               "RelativeDocumentMoniker": "Panaderia\\Models\\Categoria.cs",

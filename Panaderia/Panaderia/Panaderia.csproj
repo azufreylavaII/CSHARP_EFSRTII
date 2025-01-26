@@ -125,6 +125,7 @@
     <Compile Include="Controllers\DetallesPedidoController.cs" />
     <Compile Include="Controllers\HistorialComprasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PagosController.cs" />
     <Compile Include="Controllers\PedidosController.cs" />
     <Compile Include="Controllers\ProductosController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
@@ -198,6 +199,7 @@
     <Folder Include="Views\Categorias\" />
     <Folder Include="Views\DetallesPedido\" />
     <Folder Include="Views\HistorialCompras\" />
+    <Folder Include="Views\Pagos\" />
     <Folder Include="Views\Pedidos\" />
     <Folder Include="Views\Productos\" />
     <Folder Include="Views\Usuarios\" />
