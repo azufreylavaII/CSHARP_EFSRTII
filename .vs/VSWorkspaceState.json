@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Panaderia",
+    "\\Panaderia\\Panaderia",
+    "\\Panaderia\\Panaderia\\Models"
   ],
-  "SelectedNode": "\\Panaderia.sln",
   "PreviewInSolutionExplorer": false
 }
