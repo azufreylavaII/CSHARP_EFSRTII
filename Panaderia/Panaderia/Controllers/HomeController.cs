@@ -1,15 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-
+﻿using System.Web.Mvc;
+using Panaderia.Models;
 namespace Panaderia.Controllers
 {
     public class HomeController : Controller
     {
         public ActionResult Index()
         {
+            DataBaseConnection db = new DataBaseConnection();
+            bool resultado = db.ProbarConexion();
+
+            if (resultado)
+            {
+                ViewBag.Mensaje = "Conexión exitosa a MySQL.";
+            }
+            else
+            {
+                ViewBag.Mensaje = "Fallo en la conexión a MySQL.";
+            }
+
             return View();
         }
 
