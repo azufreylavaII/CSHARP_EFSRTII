@@ -7,6 +7,8 @@ using System.Web;
 
 namespace Panaderia.Models
 {
+   
+
     public class Pedido
     {
         [Key]
@@ -15,17 +17,19 @@ namespace Panaderia.Models
         [ForeignKey("Usuario")]
         public int IdUsuario { get; set; }
 
+        [Required]
         public DateTime FechaPedido { get; set; }
 
-        [MaxLength(100)]
+        [Required]
+        [MaxLength(50)]
         public string Estado { get; set; }
 
         [Required]
         public decimal Total { get; set; }
 
-        [MaxLength(50)]
-        public string MetodoPago { get; set; }
-
+        // Relaciones
         public Usuario Usuario { get; set; }
+        public ICollection<DetallePedido> Detalles { get; set; }
     }
+
 }

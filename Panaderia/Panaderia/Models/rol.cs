@@ -1,28 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
-
+using System.ComponentModel.DataAnnotations;
 namespace Panaderia.Models
 {
    
-    public class Categoria
+
+    public class Rol
     {
         [Key]
-        public int IdCategoria { get; set; }
+        public int IdRol { get; set; }
 
         [Required]
         [MaxLength(100)]
-        public string Nombre { get; set; }
+        public string NombreRol { get; set; }
 
         [MaxLength(255)]
         public string Descripcion { get; set; }
 
         [Required]
         public bool Estado { get; set; }
-
-        public DateTime FechaRegistro { get; set; }
     }
 
 }
