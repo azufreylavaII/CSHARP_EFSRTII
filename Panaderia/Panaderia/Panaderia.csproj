@@ -189,6 +189,7 @@
     <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\DataBaseConnection.cs" />
     <Compile Include="Models\DetallePedido.cs" />
+    <Compile Include="Models\Form.cs" />
     <Compile Include="Models\HistorialCompra.cs" />
     <Compile Include="Models\Pago.cs" />
     <Compile Include="Models\Pedido.cs" />
@@ -253,13 +254,13 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Form\Crear.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Carritos\" />
     <Folder Include="Views\Categorias\" />
     <Folder Include="Views\DetallesPedido\" />
-    <Folder Include="Views\Form\" />
     <Folder Include="Views\HistorialCompras\" />
     <Folder Include="Views\Pagos\" />
     <Folder Include="Views\Pedidos\" />
