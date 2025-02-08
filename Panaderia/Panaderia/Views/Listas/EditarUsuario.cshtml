@@ -1,0 +1,44 @@
+﻿@model Panaderia.Models.Usuario
+
+@{
+    ViewBag.Title = "Editar Usuario";
+}
+
+<h2>Editar Usuario</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Nombre)
+        @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Correo)
+        @Html.TextBoxFor(model => model.Correo, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Contraseña)
+        @Html.PasswordFor(model => model.Contraseña, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Direccion)
+        @Html.TextBoxFor(model => model.Direccion, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Telefono)
+        @Html.TextBoxFor(model => model.Telefono, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Rol)
+        @Html.TextBoxFor(model => model.Rol, new { @class = "form-control" })
+    </div>
+
+    <button type="submit" class="btn btn-warning">Actualizar</button>
+}
