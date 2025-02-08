@@ -9,11 +9,6 @@ obj/
 *.vspx
 *.log
 
-# Archivos de configuración locales
-*.config
-!Web.config     # Asegúrate de que el Web.config base se mantenga en el repositorio
-appsettings*.json
-!appsettings.json  # Mantén el archivo base de configuración, pero ignora los específicos del entorno
 
 # Archivos de publicación o compilación
 *.Publish.xml
