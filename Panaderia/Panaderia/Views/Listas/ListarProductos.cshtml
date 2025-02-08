@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Panaderia.Models.Producto>
+
+@{
+    ViewBag.Title = "Lista de Productos";
+}
+
+<h2>Lista de Productos</h2>
+
+<p>
+    <a href="@Url.Action("CrearProducto")" class="btn btn-primary">Crear Producto</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var producto in Model)
+        {
+            <tr>
+                <td>@producto.Nombre</td>
+                <td>@producto.Descripcion</td>
+                <td>@producto.Precio</td>
+                <td>@producto.Stock</td>
+                <td>@(producto.Estado ? "Activo" : "Inactivo")</td>
+                <td>
+                    <a href="@Url.Action("EditarProducto", new { id = producto.IdProducto })" class="btn btn-warning">Editar</a>
+                    <a href="@Url.Action("EliminarProducto", new { id = producto.IdProducto })" class="btn btn-danger" onclick="return confirm('¿Estás seguro de eliminar este producto?');">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
