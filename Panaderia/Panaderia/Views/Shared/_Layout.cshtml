@@ -1,26 +1,90 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+    <title>@ViewBag.Title - Pan y Tradición</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        .navbar-custom {
+            background-color: #B2967E;
+            padding: 15px;
+        }
+
+            .navbar-custom .navbar-brand {
+                color: white;
+                font-size: 1.5rem;
+                font-weight: bold;
+            }
+
+            .navbar-custom .nav-link {
+                color: white;
+                font-size: 1.1rem;
+                margin-right: 10px;
+                transition: color 0.3s ease-in-out;
+            }
+
+                .navbar-custom .nav-link:hover {
+                    color: #ffe0b3;
+                }
+
+            .navbar-custom .btn-login {
+                background-color: white;
+                color: #ff8c42;
+                border-radius: 20px;
+                padding: 5px 15px;
+                transition: background-color 0.3s ease-in-out;
+            }
+
+                .navbar-custom .btn-login:hover {
+                    background-color: #ffe0b3;
+                    color: #ff8c42;
+                }
+
+        .footer-custom {
+            background-color: #B2967E;
+            color: white;
+            padding: 20px 0;
+        }
+
+            .footer-custom a {
+                color: white;
+                text-decoration: none;
+                margin: 0 10px;
+                transition: color 0.3s ease-in-out;
+            }
+
+                .footer-custom a:hover {
+                    color: #ffe0b3;
+                }
+
+        .footer-icons i {
+            font-size: 1.5rem;
+            margin: 0 10px;
+        }
+    </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-custom">
         <div class="container">
-            @Html.ActionLink("Nombre de la aplicación", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Alternar navegación" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
+            <a href="@Url.Action("Index", "Home")" class="navbar-brand">
+                <img src="/Content/Images/logo.png" alt="Logo Pan y Tradición" height="40" class="me-2">
+                Pan y Tradición
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-grow-1">
-                    <li>@Html.ActionLink("Inicio", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Acerca de", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Contacto", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">@Html.ActionLink("Inicio", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("Productos", "Index", "Productos", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("Contacto", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">@Html.ActionLink("Iniciar Sesión", "Login", "Account", new { area = "" }, new { @class = "btn btn-login" })</li>
                 </ul>
             </div>
         </div>
@@ -28,11 +92,22 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
-        </footer>
+
     </div>
 
+    <footer class="footer-custom text-center">
+        <div class="container">
+            <p>&copy; @DateTime.Now.Year - Pan y Tradición</p>
+            <div class="footer-icons">
+                <a href="#"><i class="bi bi-facebook"></i></a>
+                <a href="#"><i class="bi bi-instagram"></i></a>
+                <a href="#"><i class="bi bi-twitter"></i></a>
+            </div>
+            <p><a href="#">Términos y Condiciones</a> | <a href="#">Política de Privacidad</a></p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

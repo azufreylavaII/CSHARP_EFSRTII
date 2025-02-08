@@ -3,7 +3,10 @@
     "",
     "\\Panaderia",
     "\\Panaderia\\Panaderia",
-    "\\Panaderia\\Panaderia\\Models"
+    "\\Panaderia\\Panaderia\\Models",
+    "\\Panaderia\\Panaderia\\Views",
+    "\\Panaderia\\Panaderia\\Views\\Home"
   ],
+  "SelectedNode": "\\Panaderia\\Panaderia.sln",
   "PreviewInSolutionExplorer": false
 }
