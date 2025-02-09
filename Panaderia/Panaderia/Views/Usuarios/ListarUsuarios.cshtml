@@ -1,35 +1,159 @@
 ﻿@model IEnumerable<Panaderia.Models.Usuario>
 
-@{
-    ViewBag.Title = "ListarUsuarios";
-}
-
 @{ ViewBag.Title = "Lista de Usuarios"; }
 
 <h2>Lista de Usuarios</h2>
 
-<a href="@Url.Action("CrearUsuario", "Usuarios")" class="btn btn-primary">Registrar Nuevo Usuario</a>
+<div class="container-fluid py-4">
+    <!-- Header Section -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="display-6 mb-1">
+                <i class="bi bi-people me-2"></i>Usuarios
+            </h2>
+            <p class="text-muted">Administra los usuarios registrados en el sistema</p>
+        </div>
+        <div class="d-flex gap-2">
+            <a href="@Url.Action("CrearUsuario")" class="btn btn-primary">
+                <i class="bi bi-person-plus me-2"></i>Nuevo Usuario
+            </a>
+            <a href="@Url.Action("ListarProductos")" class="btn btn-outline-primary">
+                <i class="bi bi-box-seam me-2"></i>Gestionar Productos
+            </a>
+        </div>
+    </div>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Nombre</th>
-            <th>Correo</th>
-            <th>Teléfono</th>
-            <th>Acciones</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var usuario in Model)
-        {
-<tr>
-    <td>@usuario.nombre</td>
-    <td>@usuario.correo</td>
-    <td>@usuario.telefono</td>
-    <td>
-        <a href="@Url.Action("EditarUsuario", "Usuarios", new { id = usuario.id_usuario })" class="btn btn-warning">Editar</a>
-        <a href="@Url.Action("EliminarUsuario", "Usuarios", new { id = usuario.id_usuario })" class="btn btn-danger" onclick="return confirm('¿Estás seguro de eliminar este usuario?');">Eliminar</a>
-    </td>
-</tr>}
-    </tbody>
-</table>
+    <!-- Table Section -->
+    <div class="card shadow-sm border-0">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Usuario</th>
+                            <th>Contacto</th>
+                            <th>Dirección</th>
+                            <th>Rol</th>
+                            <th>Registro</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var usuario in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div class="avatar-circle me-2">
+                                            @usuario.nombre.Substring(0, 1).ToUpper()
+                                        </div>
+                                        <div>
+                                            <strong>@usuario.nombre</strong>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <small class="text-muted d-block">
+                                        <i class="bi bi-envelope me-1"></i>@usuario.correo
+                                    </small>
+                                    <small class="text-muted d-block">
+                                        <i class="bi bi-telephone me-1"></i>@usuario.telefono
+                                    </small>
+                                </td>
+                                <td>
+                                    <small class="text-muted">
+                                        <i class="bi bi-geo-alt me-1"></i>@usuario.direccion
+                                    </small>
+                                </td>
+                                <td>
+                                    @if (usuario.rol == "admin")
+                                    {
+                                        <span class="badge bg-primary">Administrador</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-info">Cliente</span>
+                                    }
+                                </td>
+                                <td>
+                                    <small class="text-muted">
+                                        <i class="bi bi-calendar me-1"></i>
+                                        @usuario.fecha_registro.ToString("dd/MM/yyyy")
+                                    </small>
+                                </td>
+                                <td>
+                                    <div class="btn-group">
+                                        <a href="@Url.Action("EditarUsuario", new { id = usuario.id_usuario })"
+                                           class="btn btn-sm btn-outline-primary">
+                                            <i class="bi bi-pencil"></i>(@usuario.id_usuario)
+                                        </a>
+                                        <a href="@Url.Action("EliminarUsuario", new { id = usuario.id_usuario })"
+                                           class="btn btn-sm btn-outline-danger"
+                                           onclick="return confirm('¿Estás seguro de eliminar este usuario?');">
+                                            <i class="bi bi-trash"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .avatar-circle {
+        width: 35px;
+        height: 35px;
+        background-color: #e9ecef;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        color: #6c757d;
+    }
+
+    .btn-group .btn {
+        padding: 0.25rem 0.5rem;
+    }
+
+    .card {
+        transition: all 0.2s ease-in-out;
+    }
+
+    .table th {
+        font-weight: 600;
+        color: #495057;
+    }
+
+    .badge {
+        font-weight: 500;
+        padding: 0.5em 0.8em;
+    }
+
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.25rem;
+    }
+
+    .display-6 {
+        font-weight: 600;
+        color: #212529;
+    }
+
+    .shadow-sm {
+        box-shadow: 0 .125rem .25rem rgba(0,0,0,.075) !important;
+    }
+
+    .table-responsive {
+        min-height: 400px;
+    }
+
+    tr:hover {
+        background-color: #f8f9fa;
+    }
+</style>

@@ -7,6 +7,8 @@ using BCrypt.Net;
 using Org.BouncyCastle.Crypto.Generators;
 using System.Collections.Generic;
 using System.Linq;
+using System.Diagnostics;
+
 
 namespace Panaderia.Controllers
 {
@@ -14,7 +16,7 @@ namespace Panaderia.Controllers
     {
         private string connectionString = ConfigurationManager.ConnectionStrings["MySqlConnection"].ConnectionString;
 
-       
+
 
         // Listar usuarios
         public ActionResult ListarUsuarios()
@@ -59,7 +61,7 @@ namespace Panaderia.Controllers
                     conn.Open();
                     string query = "INSERT INTO Usuarios (nombre, correo, contrasena, direccion, telefono, rol) VALUES (@Nombre, @Correo, @Contraseña,  @Direccion,  @Telefono, @Rol)";
                     MySqlCommand cmd = new MySqlCommand(query, conn);
-               
+
                     cmd.Parameters.AddWithValue("@Nombre", usuario.nombre);
                     cmd.Parameters.AddWithValue("@Correo", usuario.correo);
                     cmd.Parameters.AddWithValue("@Contraseña", usuario.contrasena);
@@ -96,7 +98,7 @@ namespace Panaderia.Controllers
                         correo = reader.GetString("correo"),
                         direccion = reader.GetString("direccion"),
                         telefono = reader.IsDBNull(reader.GetOrdinal("telefono")) ? "" : reader.GetString("telefono"),
-                  
+
                     };
                 }
             }
@@ -347,12 +349,12 @@ namespace Panaderia.Controllers
                         correo = reader.GetString("correo"),
                         direccion = reader.GetString("direccion"),
                         telefono = reader.IsDBNull(reader.GetOrdinal("telefono")) ? "" : reader.GetString("telefono"),
-                       
+
                     });
                 }
             }
 
-            
+
 
             return View(usuarios);
         }
