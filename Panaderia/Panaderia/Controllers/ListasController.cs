@@ -342,11 +342,38 @@ namespace Panaderia.Controllers
         [HttpPost]
         public ActionResult EditarUsuario(Usuario usuario)
         {
-            if (ModelState.IsValid)
+            // Depuración: Verificar si el modelo es válido
+            Console.WriteLine("Validando el modelo...");
+            if (!ModelState.IsValid)
+            {
+                Console.WriteLine("El modelo no es válido. Errores de validación:");
+                var errors = ModelState.Values.SelectMany(v => v.Errors);
+                foreach (var error in errors)
+                {
+                    Console.WriteLine(error.ErrorMessage);
+                }
+                return View(usuario);
+            }
+
+            // Depuración: Verificar los datos recibidos
+            Console.WriteLine("Datos recibidos del formulario:");
+            Console.WriteLine($"ID Usuario: {usuario.id_usuario}");
+            Console.WriteLine($"Nombre: {usuario.nombre}");
+            Console.WriteLine($"Correo: {usuario.correo}");
+            Console.WriteLine($"Contraseña: {usuario.contrasena}");
+            Console.WriteLine($"Dirección: {usuario.direccion}");
+            Console.WriteLine($"Teléfono: {usuario.telefono}");
+            Console.WriteLine($"Rol: {usuario.rol}");
+
+            try
             {
                 using (MySqlConnection conn = new MySqlConnection(connectionString))
                 {
+                    // Depuración: Intentando abrir la conexión
+                    Console.WriteLine("Abriendo conexión a la base de datos...");
                     conn.Open();
+
+                    // Construir la consulta SQL
                     string query = "UPDATE Usuarios SET Nombre = @Nombre, Correo = @Correo, Direccion = @Direccion, Telefono = @Telefono, Rol = @Rol";
 
                     if (!string.IsNullOrEmpty(usuario.contrasena))
@@ -356,8 +383,13 @@ namespace Panaderia.Controllers
 
                     query += " WHERE id_usuario = @IdUsuario";
 
+                    // Depuración: Mostrar la consulta SQL generada
+                    Console.WriteLine("Consulta SQL generada:");
+                    Console.WriteLine(query);
+
                     MySqlCommand cmd = new MySqlCommand(query, conn);
 
+                    // Agregar parámetros
                     cmd.Parameters.AddWithValue("@IdUsuario", usuario.id_usuario);
                     cmd.Parameters.AddWithValue("@Nombre", usuario.nombre);
                     cmd.Parameters.AddWithValue("@Correo", usuario.correo);
@@ -370,19 +402,42 @@ namespace Panaderia.Controllers
                         cmd.Parameters.AddWithValue("@Contrasena", usuario.contrasena);
                     }
 
+                    // Depuración: Mostrar los valores de los parámetros
+                    Console.WriteLine("Valores de los parámetros:");
+                    foreach (MySqlParameter param in cmd.Parameters)
+                    {
+                        Console.WriteLine($"{param.ParameterName}: {param.Value}");
+                    }
+
+                    // Ejecutar la consulta
+                    Console.WriteLine("Ejecutando la consulta...");
                     int affectedRows = cmd.ExecuteNonQuery();
+
+                    // Depuración: Verificar filas afectadas
+                    Console.WriteLine($"Filas afectadas: {affectedRows}");
 
                     if (affectedRows == 0)
                     {
                         ModelState.AddModelError("", "No se pudo actualizar el usuario.");
+                        Console.WriteLine("No se pudo actualizar el usuario.");
                         return View(usuario);
                     }
                 }
 
+                // Depuración: Redireccionar después de la actualización
+                Console.WriteLine("Usuario actualizado correctamente. Redirigiendo a ListarUsuarios...");
                 return RedirectToAction("ListarUsuarios");
             }
+            catch (Exception ex)
+            {
+                // Depuración: Capturar y mostrar excepciones
+                Console.WriteLine("Error durante la actualización:");
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.StackTrace);
 
-            return View(usuario);
+                ModelState.AddModelError("", "Error al actualizar el usuario: " + ex.Message);
+                return View(usuario);
+            }
         }
 
     }

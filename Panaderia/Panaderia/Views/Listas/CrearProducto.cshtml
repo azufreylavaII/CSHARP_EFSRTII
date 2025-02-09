@@ -2,35 +2,120 @@
 
 @{ ViewBag.Title = "Crear Producto"; }
 
-<h2>Crear Producto</h2>
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm border-0">
+                <div class="card-body p-4">
+                    <!-- Header -->
+                    <div class="text-center mb-4">
+                        <h2 class="display-6 mb-1">
+                            <i class="bi bi-box-seam me-2"></i>Nuevo Producto
+                        </h2>
+                        <p class="text-muted">Ingresa los detalles del nuevo producto</p>
+                    </div>
 
-@using (Html.BeginForm())
-{
-@Html.AntiForgeryToken()
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Nombre)
-                    @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control" })
-                </div>
-
-                                <div class="form-group">
-                                    @Html.LabelFor(model => model.Descripcion)
-                                    @Html.TextBoxFor(model => model.Descripcion, new { @class = "form-control" })
+                        <div class="row g-3">
+                            <div class="col-md-12">
+                                <div class="form-floating mb-3">
+                                    @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control", placeholder = "Nombre del producto" })
+                                    @Html.LabelFor(model => model.Nombre, "Nombre del producto")
                                 </div>
+                            </div>
 
-                                                <div class="form-group">
-                                                    @Html.LabelFor(model => model.Precio)
-                                                    @Html.TextBoxFor(model => model.Precio, new { @class = "form-control" })
-                                                </div>
+                            <div class="col-md-12">
+                                <div class="form-floating mb-3">
+                                    @Html.TextAreaFor(model => model.Descripcion, new { @class = "form-control", style = "height: 100px", placeholder = "Descripción" })
+                                    @Html.LabelFor(model => model.Descripcion, "Descripción del producto")
+                                </div>
+                            </div>
 
-                                                                <div class="form-group">
-                                                                    @Html.LabelFor(model => model.Stock)
-                                                                    @Html.TextBoxFor(model => model.Stock, new { @class = "form-control" })
-                                                                </div>
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    @Html.TextBoxFor(model => model.Precio, new { @class = "form-control", type = "number", step = "0.10", placeholder = "Precio" })
+                                    @Html.LabelFor(model => model.Precio, "Precio (S/.)")
+                                </div>
+                            </div>
 
-                                                                                <div class="form-group">
-                                                                                    @Html.LabelFor(model => model.Estado)
-                                                                                    @Html.CheckBoxFor(model => model.Estado)
-                                                                                </div>
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    @Html.TextBoxFor(model => model.Stock, new { @class = "form-control", type = "number", placeholder = "Stock" })
+                                    @Html.LabelFor(model => model.Stock, "Stock disponible")
+                                </div>
+                            </div>
 
-                                                                                                <button type="submit" class="btn btn-success">Guardar</button>}
+                            <div class="col-12">
+                                <div class="form-check form-switch">
+                                    @Html.CheckBoxFor(model => model.Estado, new { @class = "form-check-input" })
+                                    @Html.LabelFor(model => model.Estado, "Producto activo", new { @class = "form-check-label" })
+                                </div>
+                            </div>
+
+                            <div class="col-12 mt-4">
+                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                    <a href="@Url.Action("ListarProductos")" class="btn btn-light">Cancelar</a>
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="bi bi-check-lg me-2"></i>Guardar Producto
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .card {
+        transition: all 0.2s ease-in-out;
+    }
+
+    .display-6 {
+        font-weight: 600;
+        color: #212529;
+    }
+
+    .form-floating > .form-control {
+        height: calc(3.5rem + 2px);
+        line-height: 1.25;
+    }
+
+    .form-floating > textarea.form-control {
+        height: 100px;
+    }
+
+    .form-floating > .form-control:focus {
+        border-color: #86b7fe;
+        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+    }
+
+    .form-check-input:checked {
+        background-color: #0d6efd;
+        border-color: #0d6efd;
+    }
+
+    .btn {
+        padding: 0.5rem 1rem;
+        font-weight: 500;
+    }
+
+    .btn-primary {
+        background-color: #0d6efd;
+        border-color: #0d6efd;
+    }
+
+    .btn-light {
+        background-color: #f8f9fa;
+        border-color: #f8f9fa;
+    }
+
+    .shadow-sm {
+        box-shadow: 0 .125rem .25rem rgba(0,0,0,.075) !important;
+    }
+</style>

@@ -2,40 +2,131 @@
 
 @{ ViewBag.Title = "Editar Usuario"; }
 
-<h2>Editar Usuario</h2>
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm border-0">
+                <div class="card-body p-4">
+                    <!-- Header -->
+                    <div class="text-center mb-4">
+                        <h2 class="display-6 mb-1">
+                            <i class="bi bi-person-gear me-2"></i>Editar Usuario
+                        </h2>
+                        <p class="text-muted">Modifica los datos del usuario</p>
+                    </div>
 
-@using (Html.BeginForm())
-{
-@Html.AntiForgeryToken()
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.HiddenFor(model => model.id_usuario)
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.nombre)
-                    @Html.TextBoxFor(model => model.nombre, new { @class = "form-control" })
-                </div>
-
-                                <div class="form-group">
-                                    @Html.LabelFor(model => model.correo)
-                                    @Html.TextBoxFor(model => model.correo, new { @class = "form-control" })
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    @Html.TextBoxFor(model => model.nombre, new { @class = "form-control", placeholder = "Nombre" })
+                                    @Html.LabelFor(model => model.nombre, "Nombre completo")
                                 </div>
+                            </div>
 
-                                                <div class="form-group">
-                                                    @Html.LabelFor(model => model.contrasena)
-                                                    @Html.PasswordFor(model => model.contrasena, new { @class = "form-control" })
-                                                </div>
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    @Html.TextBoxFor(model => model.correo, new { @class = "form-control", type = "email", placeholder = "Correo" })
+                                    @Html.LabelFor(model => model.correo, "Correo electrónico")
+                                </div>
+                            </div>
 
-                                                                <div class="form-group">
-                                                                    @Html.LabelFor(model => model.direccion)
-                                                                    @Html.TextBoxFor(model => model.direccion, new { @class = "form-control" })
-                                                                </div>
+                            <div class="col-md-12">
+                                <div class="form-floating mb-3">
+                                    @Html.PasswordFor(model => model.contrasena, new { @class = "form-control", placeholder = "Contraseña" })
+                                    @Html.LabelFor(model => model.contrasena, "Contraseña")
+                                </div>
+                            </div>
 
-                                                                                <div class="form-group">
-                                                                                    @Html.LabelFor(model => model.telefono)
-                                                                                    @Html.TextBoxFor(model => model.telefono, new { @class = "form-control" })
-                                                                                </div>
+                            <div class="col-md-12">
+                                <div class="form-floating mb-3">
+                                    @Html.TextBoxFor(model => model.direccion, new { @class = "form-control", placeholder = "Dirección" })
+                                    @Html.LabelFor(model => model.direccion, "Dirección completa")
+                                </div>
+                            </div>
 
-                                                                                                <div class="form-group">
-                                                                                                    @Html.LabelFor(model => model.rol)
-                                                                                                    @Html.TextBoxFor(model => model.rol, new { @class = "form-control" })
-                                                                                                </div>
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    @Html.TextBoxFor(model => model.telefono, new { @class = "form-control", placeholder = "Teléfono" })
+                                    @Html.LabelFor(model => model.telefono, "Número de teléfono")
+                                </div>
+                            </div>
 
-                                                                                                                <button type="submit" class="btn btn-warning">Actualizar</button>}
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    @Html.DropDownListFor(model => model.rol,
+                                             new SelectList(new[] { "cliente", "admin" }),
+                                             "Seleccionar rol",
+                                             new { @class = "form-select", placeholder = "Rol" })
+                                    @Html.LabelFor(model => model.rol, "Rol del usuario")
+                                </div>
+                            </div>
+
+                            <div class="col-12 mt-4">
+                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                    <a href="@Url.Action("ListarUsuarios")" class="btn btn-light">Cancelar</a>
+                                    <button type="submit" class="btn btn-warning">
+                                        <i class="bi bi-check-lg me-2"></i>Actualizar Usuario
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .card {
+        transition: all 0.2s ease-in-out;
+    }
+
+    .display-6 {
+        font-weight: 600;
+        color: #212529;
+    }
+
+    .form-floating > .form-control {
+        height: calc(3.5rem + 2px);
+        line-height: 1.25;
+    }
+
+    .form-floating > textarea.form-control {
+        height: 100px;
+    }
+
+    .form-floating > .form-control:focus {
+        border-color: #86b7fe;
+        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+    }
+
+    .form-check-input:checked {
+        background-color: #0d6efd;
+        border-color: #0d6efd;
+    }
+
+    .btn {
+        padding: 0.5rem 1rem;
+        font-weight: 500;
+    }
+
+    .btn-warning {
+        background-color: #ffc107;
+        border-color: #ffc107;
+    }
+
+    .btn-light {
+        background-color: #f8f9fa;
+        border-color: #f8f9fa;
+    }
+
+    .shadow-sm {
+        box-shadow: 0 .125rem .25rem rgba(0,0,0,.075) !important;
+    }
+</style>
