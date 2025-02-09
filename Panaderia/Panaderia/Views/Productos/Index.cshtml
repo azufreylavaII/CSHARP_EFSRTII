@@ -4,40 +4,109 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Lista de Productos</h2>
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .page-header {
+            background-color: #f8e5da;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+        }
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Nombre</th>
-            <th>Precio</th>
-            <th>Cantidad</th>
-            <th>Acción</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var producto in Model)
-        {
-        <tr>
-            <td>@producto.Nombre</td>
-            <td>@producto.Precio.ToString("C")</td>
-            <td>
-                <input type="number" id="cantidad-@producto.IdProducto" name="cantidad" min="1" value="1" class="form-control" style="width: 60px;" />
-            </td>
-            <td>
-                <form action="@Url.Action("AgregarAlCarrito", "Productos")" method="post">
-                    <input type="hidden" name="idProducto" value="@producto.IdProducto" />
-                    <input type="hidden" id="input-cantidad-@producto.IdProducto" name="cantidad" value="1" />
-                    <button type="submit" class="btn btn-success" onclick="setCantidad(@producto.IdProducto)">Agregar al Carrito</button>
-                </form>
-            </td>
-        </tr> }            
-    </tbody> 
-</table>
+        .product-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+        }
 
-<script>
-    function setCantidad(productoId) {
-        var cantidad = document.getElementById("cantidad-" + productoId).value;
-        document.getElementById("input-cantidad-" + productoId).value = cantidad;
-    }
-</script>
+            .product-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            }
+
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+            background-color: #f8f9fa;
+        }
+
+        .quantity-input {
+            width: 80px !important;
+            text-align: center;
+            border-radius: 5px;
+            margin: 0 auto;
+        }
+
+        .add-to-cart-btn {
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            font-weight: bold;
+        }
+
+        .quantity-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <div class="page-header text-center">
+        <h2 class="display-4">Nuestros Productos</h2>
+        <p class="lead">Descubre nuestra selección de productos recién horneados</p>
+    </div>
+
+    <div class="container">
+        <div class="row g-4">
+            @foreach (var producto in Model)
+            {
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card product-card">
+            
+                        <div class="card-body text-center">
+                            <h5 class="card-title mb-3">@producto.Nombre</h5>
+                            <p class="product-price mb-3">@producto.Precio.ToString("C")</p>
+
+                            <div class="quantity-container">
+                                <label for="cantidad-@producto.IdProducto" class="me-2">Cantidad:</label>
+                                <input type="number"
+                                       id="cantidad-@producto.IdProducto"
+                                       name="cantidad"
+                                       min="1"
+                                       value="1"
+                                       class="form-control quantity-input" />
+                            </div>
+
+                            <form action="@Url.Action("AgregarAlCarrito", "Productos")" method="post">
+                                <input type="hidden" name="idProducto" value="@producto.IdProducto" />
+                                <input type="hidden" id="input-cantidad-@producto.IdProducto" name="cantidad" value="1" />
+                                <button type="submit"
+                                        class="btn btn-success add-to-cart-btn"
+                                        onclick="setCantidad(@producto.IdProducto)">
+                                    <i class="fas fa-shopping-cart me-2"></i>Agregar al Carrito
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function setCantidad(productoId) {
+            var cantidad = document.getElementById("cantidad-" + productoId).value;
+            document.getElementById("input-cantidad-" + productoId).value = cantidad;
+        }
+    </script>
+</body>
+</html>

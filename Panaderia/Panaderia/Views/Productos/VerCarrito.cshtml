@@ -9,43 +9,168 @@
 }
 
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Producto</th>
-            <th>Precio Unitario</th>
-            <th>Cantidad</th>
-            <th>Subtotal</th>
-           
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-        <tr>
-            <td>@item.NombreProducto</td>
-            <td>@item.PrecioUnitario.ToString("C")</td>
-            <td>@item.Cantidad</td>
-            <td>@item.Subtotal.ToString("C")</td>
-            <td>
-                <form action="@Url.Action("EliminarDelCarrito", "Productos")" method="post">
-                    <input type="hidden" name="idProducto" value="@item.IdProducto " />
-                    <button type="submit" class="btn btn-danger">Eliminar</button>
-                </form>
-                <p>ID Producto: @item.IdProducto</p>
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .page-header {
+            background-color: #f8e5da;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+        }
 
-            </td>
+        .cart-container {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            padding: 2rem;
+            margin: 20px auto;
+        }
 
-        </tr>
-       }
-        <tr>
-            <td colspan="3" class="text-right"><strong>Total:</strong></td>
-            <td><strong>@total.ToString("C")</strong></td>
+        .table thead th {
+            background-color: #f8f9fa;
+            border-bottom: 2px solid #dee2e6;
+            color: #495057;
+            font-weight: 600;
+            padding: 1rem;
+        }
 
-        </tr>
-    </tbody>
-</table>
+        .table td {
+            vertical-align: middle;
+            padding: 1rem;
+        }
 
-<form action="@Url.Action("TerminarPedido", "Productos")" method="post">
-    <button type="submit" class="btn btn-success">Terminar Pedido</button>
-</form>
+        .product-name {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .price {
+            color: #2c3e50;
+        }
+
+        .quantity {
+            font-weight: 500;
+        }
+
+        .subtotal {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .delete-btn {
+            transition: all 0.3s ease;
+        }
+
+            .delete-btn:hover {
+                transform: translateY(-2px);
+            }
+
+        .total-row {
+            background-color: #f8f9fa;
+            font-size: 1.2rem;
+        }
+
+        .total-amount {
+            color: #28a745;
+            font-size: 1.4rem;
+            font-weight: bold;
+        }
+
+        .checkout-btn {
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+            .checkout-btn:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+            }
+
+        .product-id {
+            font-size: 0.8rem;
+            color: #6c757d;
+            margin-top: 0.5rem;
+        }
+
+        .empty-cart-message {
+            text-align: center;
+            padding: 2rem;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <div class="page-header text-center">
+        <h2 class="display-4">Tu Carrito de Compras</h2>
+        <p class="lead">Revisa tus productos seleccionados</p>
+    </div>
+
+    <div class="container">
+        <div class="cart-container">
+            @if (Model.Any())
+            {
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Producto</th>
+                                <th>Precio Unitario</th>
+                                <th>Cantidad</th>
+                                <th>Subtotal</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td class="product-name">@item.NombreProducto</td>
+                                    <td class="price">@item.PrecioUnitario.ToString("C")</td>
+                                    <td class="quantity">@item.Cantidad</td>
+                                    <td class="subtotal">@item.Subtotal.ToString("C")</td>
+                                    <td>
+                                        <form action="@Url.Action("EliminarDelCarrito", "Productos")" method="post">
+                                            <input type="hidden" name="idProducto" value="@item.IdProducto" />
+                                            <button type="submit" class="btn btn-danger delete-btn">
+                                                <i class="fas fa-trash-alt me-2"></i>Eliminar
+                                            </button>
+                                        </form>
+                                        <p class="product-id">ID Producto: @item.IdProducto</p>
+                                    </td>
+                                </tr>
+                            }
+                            <tr class="total-row">
+                                <td colspan="3" class="text-end"><strong>Total:</strong></td>
+                                <td class="total-amount">@total.ToString("C")</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="text-end mt-4">
+                    <form action="@Url.Action("TerminarPedido", "Productos")" method="post">
+                        <button type="submit" class="btn btn-success checkout-btn">
+                            <i class="fas fa-check-circle me-2"></i>Terminar Pedido
+                        </button>
+                    </form>
+                </div>
+            }
+            else
+            {
+                <div class="empty-cart-message">
+                    <i class="fas fa-shopping-cart fa-3x mb-3"></i>
+                    <h3>Tu carrito está vacío</h3>
+                    <p>¡Agrega algunos productos deliciosos!</p>
+                </div>
+            }
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -231,14 +231,11 @@ namespace Panaderia.Controllers
         [HttpPost]
         public ActionResult Login(string correo, string contrasena)
         {
-            // Verificar si los campos no están vacíos
             if (string.IsNullOrEmpty(correo) || string.IsNullOrEmpty(contrasena))
             {
                 ViewBag.Mensaje = "Por favor ingresa el correo y la contraseña.";
-                return View();  // Regresamos la vista con el mensaje
+                return View();
             }
-
-            string connectionString = ConfigurationManager.ConnectionStrings["MySqlConnection"].ConnectionString;
 
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
@@ -246,34 +243,36 @@ namespace Panaderia.Controllers
                 {
                     connection.Open();
 
-                    // Buscar el usuario por correo
-                    string query = "SELECT * FROM Usuarios WHERE correo = @correo";
+                    string query = "SELECT id_usuario, nombre, contrasena, rol FROM Usuarios WHERE correo = @correo";
                     using (var command = new MySqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@correo", correo);
-
                         var reader = command.ExecuteReader();
+
                         if (reader.Read())
                         {
-                            // Verificar la contraseña con bcrypt
                             string storedPassword = reader["contrasena"].ToString();
-                            if (BCrypt.Net.BCrypt.Verify(contrasena, storedPassword))
+                            bool passwordMatches = false;
+
+                            // Verificar si la contraseña almacenada es un hash válido de BCrypt
+                            if (storedPassword.StartsWith("$2a$") || storedPassword.StartsWith("$2b$") || storedPassword.StartsWith("$2y$"))
                             {
-                                string rol = reader["rol"].ToString();
-                                Console.WriteLine("Rol guardado en la sesión: " + rol);
-                                // Si la contraseña es correcta, guardar los datos en la sesión
+                                passwordMatches = BCrypt.Net.BCrypt.Verify(contrasena, storedPassword);
+                            }
+                            else
+                            {
+                                // Si la contraseña almacenada no está encriptada, compararla directamente
+                                passwordMatches = (storedPassword == contrasena);
+                            }
+
+                            if (passwordMatches)
+                            {
+                                // Iniciar sesión y almacenar datos en la sesión
                                 Session["UsuarioID"] = reader["id_usuario"];
                                 Session["UsuarioNombre"] = reader["nombre"];
                                 Session["Rol"] = reader["rol"];
 
-                                // Mensaje de éxito
-                                ViewBag.Mensaje = "Login exitoso.";
-                                //return RedirectToAction("ListarProductos");  // Redirigir al Dashboard
-                                System.Diagnostics.Debug.WriteLine("Rol guardado en sesión: " + Session["Rol"]);
-
                                 return RedirectToAction("ListarProductos", "Productos");
-
-
                             }
                             else
                             {
@@ -293,8 +292,9 @@ namespace Panaderia.Controllers
                 }
             }
 
-            return View();  // Regresar a la vista de login si ocurre algún error
+            return View();
         }
+
 
 
         // Dashboard del usuario

@@ -7,34 +7,145 @@
 
 
 
-<h2>Mi Perfil</h2>
+<
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .profile-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Nombre</th>
-            <th>Correo</th>
-            <th>Teléfono</th>
+        .profile-header {
+            background-color: #f8e5da;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
 
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var usuario in Model)
-        {
-            <tr>
-                <td>@usuario.nombre</td>
-                <td>@usuario.correo</td>
-                <td>@usuario.telefono</td>
-                
-            </tr>
-}
-    </tbody>
-</table>
+        .profile-avatar {
+            width: 120px;
+            height: 120px;
+            background-color: #ff8c42;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-<!-- Botón para cerrar sesión -->
-<div>
-    @using (Html.BeginForm("Logout", "Usuarios", FormMethod.Post))
-    {
-        <button type="submit" class="btn btn-danger">Cerrar Sesión</button>
-    }
-</div>
+            .profile-avatar i {
+                font-size: 3rem;
+                color: white;
+            }
+
+        .profile-card {
+            background-color: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .info-item {
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+        }
+
+            .info-item:last-child {
+                border-bottom: none;
+            }
+
+        .info-label {
+            font-weight: 600;
+            color: #666;
+            width: 120px;
+            margin-right: 1rem;
+        }
+
+        .info-value {
+            color: #333;
+            flex-grow: 1;
+        }
+
+        .info-icon {
+            color: #ff8c42;
+            margin-right: 1rem;
+            width: 20px;
+            text-align: center;
+        }
+
+        .logout-btn {
+            padding: 0.8rem 2rem;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+            .logout-btn:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 4px 8px rgba(220, 53, 69, 0.2);
+            }
+
+        .section-title {
+            color: #333;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <div class="profile-container">
+        <div class="profile-header">
+            <div class="profile-avatar">
+                <i class="fas fa-user"></i>
+            </div>
+            <h2 class="mb-0">Mi Perfil</h2>
+        </div>
+
+        <div class="profile-card">
+            <h3 class="section-title">Información Personal</h3>
+
+            @foreach (var usuario in Model)
+            {
+                <div class="info-item">
+                    <i class="fas fa-user info-icon"></i>
+                    <span class="info-label">Nombre</span>
+                    <span class="info-value">@usuario.nombre</span>
+                </div>
+
+                <div class="info-item">
+                    <i class="fas fa-envelope info-icon"></i>
+                    <span class="info-label">Correo</span>
+                    <span class="info-value">@usuario.correo</span>
+                </div>
+
+                <div class="info-item">
+                    <i class="fas fa-phone info-icon"></i>
+                    <span class="info-label">Teléfono</span>
+                    <span class="info-value">@usuario.telefono</span>
+                </div>
+            }
+        </div>
+
+        <div class="text-center">
+            @using (Html.BeginForm("Logout", "Usuarios", FormMethod.Post))
+            {
+                <button type="submit" class="btn btn-danger logout-btn">
+                    <i class="fas fa-sign-out-alt me-2"></i>
+                    Cerrar Sesión
+                </button>
+            }
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

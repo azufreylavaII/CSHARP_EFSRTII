@@ -1,35 +1,169 @@
 ﻿@model Panaderia.Models.Usuario
 
-<h2>Registrar Usuario</h2>
 
-@if (ViewBag.Mensaje != null)
-{
-    <div class="alert alert-success">
-        @ViewBag.Mensaje
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #ff8c42;
+            --background-color: #fff9f5;
+        }
+
+        body {
+            background-color: var(--background-color);
+            min-height: 100vh;
+            font-size: 1.25rem; /* Aumentar el tamaño de la fuente base */
+        }
+
+        .auth-container {
+            max-width: 625px; /* 500px * 1.25 */
+            margin: 2.5rem auto; /* 2rem * 1.25 */
+            padding: 0 1.25rem; /* 1rem * 1.25 */
+        }
+
+        .auth-card {
+            background: white;
+            border-radius: 18.75px; /* 15px * 1.25 */
+            padding: 2.5rem; /* 2rem * 1.25 */
+            box-shadow: 0 5px 7.5px rgba(0, 0, 0, 0.1); /* 4px * 1.25, 6px * 1.25 */
+        }
+
+        .auth-header {
+            text-align: center;
+            margin-bottom: 2.5rem; /* 2rem * 1.25 */
+        }
+
+        .auth-icon {
+            width: 100px; /* 80px * 1.25 */
+            height: 100px; /* 80px * 1.25 */
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.25rem; /* 1rem * 1.25 */
+            color: white;
+            font-size: 2.5rem; /* 2rem * 1.25 */
+        }
+
+        .form-label {
+            font-weight: 500;
+            color: #555;
+            margin-bottom: 0.625rem; /* 0.5rem * 1.25 */
+        }
+
+        .form-control {
+            border: 2.5px solid #eee; /* 2px * 1.25 */
+            padding: 1rem; /* 0.8rem * 1.25 */
+            border-radius: 10px; /* 8px * 1.25 */
+            margin-bottom: 1.25rem; /* 1rem * 1.25 */
+        }
+
+            .form-control:focus {
+                border-color: var(--primary-color);
+                box-shadow: 0 0 0 0.25rem rgba(255, 140, 66, 0.25); /* 0.2rem * 1.25 */
+            }
+
+        .btn-auth {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 2.5rem; /* 0.8rem * 1.25, 2rem * 1.25 */
+            border: none;
+            border-radius: 10px; /* 8px * 1.25 */
+            font-weight: 500;
+            width: 100%;
+            margin-bottom: 1.25rem; /* 1rem * 1.25 */
+            transition: all 0.3s ease;
+        }
+
+            .btn-auth:hover {
+                transform: translateY(-2.5px); /* 2px * 1.25 */
+                box-shadow: 0 5px 10px rgba(255, 140, 66, 0.3); /* 4px * 1.25, 8px * 1.25 */
+                background-color: #ff7a2e;
+            }
+
+        .auth-link {
+            text-align: center;
+            display: block;
+            color: var(--primary-color);
+            text-decoration: none;
+            margin-top: 1.25rem; /* 1rem * 1.25 */
+            transition: color 0.3s ease;
+        }
+
+            .auth-link:hover {
+                color: #ff7a2e;
+            }
+
+        .alert {
+            border-radius: 10px; /* 8px * 1.25 */
+            margin-bottom: 1.875rem; /* 1.5rem * 1.25 */
+        }
+    </style>
+</head>
+<body>
+    
+
+    <!-- Registration Form -->
+    <div class="auth-container" id="registerForm">
+        <div class="auth-card">
+            <div class="auth-header">
+                <div class="auth-icon">
+                    <i class="fas fa-user-plus"></i>
+                </div>
+                <h2>Registrar Usuario</h2>
+            </div>
+
+            @if (ViewBag.Mensaje != null)
+            {
+                <div class="alert alert-success">
+                    <i class="fas fa-check-circle me-2"></i>
+                    @ViewBag.Mensaje
+                </div>
+            }
+
+            @using (Html.BeginForm())
+            {
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.nombre, new { @class = "form-label" })
+                    @Html.TextBoxFor(model => model.nombre, new { @class = "form-control", placeholder = "Ingresa tu nombre" })
+                </div>
+
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.correo, new { @class = "form-label" })
+                    @Html.TextBoxFor(model => model.correo, new { @class = "form-control", placeholder = "Ingresa tu correo" })
+                </div>
+
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.contrasena, new { @class = "form-label" })
+                    @Html.PasswordFor(model => model.contrasena, new { @class = "form-control", placeholder = "Ingresa tu contraseña" })
+                </div>
+
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.direccion, new { @class = "form-label" })
+                    @Html.TextAreaFor(model => model.direccion, new { @class = "form-control", placeholder = "Ingresa tu dirección", rows = "3" })
+                </div>
+
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.telefono, new { @class = "form-label" })
+                    @Html.TextBoxFor(model => model.telefono, new { @class = "form-control", placeholder = "Ingresa tu teléfono" })
+                </div>
+
+                <button type="submit" class="btn btn-auth">
+                    <i class="fas fa-user-plus me-2"></i>Registrar
+                </button>
+
+                <a href="@Url.Action("Login", "Usuarios")" class="auth-link">
+                    ¿Ya tienes cuenta? Inicia sesión aquí
+                </a>
+            }
+        </div>
     </div>
-}
 
-@using (Html.BeginForm())
-{
-    @Html.LabelFor(model => model.nombre)
-    @Html.TextBoxFor(model => model.nombre)
-    <br />
-
-    @Html.LabelFor(model => model.correo)
-    @Html.TextBoxFor(model => model.correo)
-    <br />
-
-    @Html.LabelFor(model => model.contrasena)
-    @Html.PasswordFor(model => model.contrasena)
-    <br />
-
-    @Html.LabelFor(model => model.direccion)
-    @Html.TextAreaFor(model => model.direccion)
-    <br />
-
-    @Html.LabelFor(model => model.telefono)
-    @Html.TextBoxFor(model => model.telefono)
-    <br />
-
-    <button type="submit">Registrar</button>
-}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

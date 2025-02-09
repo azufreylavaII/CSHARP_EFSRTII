@@ -5,232 +5,237 @@
     ViewBag.Title = "Contáctanos";
 }
 
-<style>
-    :root {
-        --primary-color: #ff8c42;
-        --secondary-color: #b22222;
-        --background-color: #fff9f5;
-        --text-color: #333;
-    }
-
-    body {
-        font-family: 'Helvetica Neue', Arial, sans-serif;
-        background-color: var(--background-color);
-        color: var(--text-color);
-        line-height: 1.6;
-    }
-
-    .page-banner {
-        height: 300px;
-        background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("/Content/Images/contact-banner.jpg");
-        background-size: cover;
-        background-position: center;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        margin-bottom: 4rem;
-    }
-
-    .page-title {
-        font-size: 3rem;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        text-align: center;
-    }
-
-    .contact-info-card {
-        background: white;
-        border-radius: 15px;
-        padding: 2rem;
-        margin-bottom: 2rem;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    }
-
-    .contact-item {
-        display: flex;
-        align-items: center;
-        margin-bottom: 1.5rem;
-        padding: 1rem;
-        background-color: var(--background-color);
-        border-radius: 10px;
-    }
-
-    .contact-icon {
-        width: 50px;
-        height: 50px;
-        background-color: var(--primary-color);
-        color: white;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-right: 1rem;
-        font-size: 1.2rem;
-    }
-
-    .contact-text h4 {
-        margin: 0;
-        color: var(--secondary-color);
-        font-size: 1.1rem;
-    }
-
-    .form-container {
-        background: white;
-        border-radius: 15px;
-        padding: 2rem;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    }
-
-    .form-control {
-        border: 2px solid #ddd;
-        padding: 0.8rem;
-        margin-bottom: 1rem;
-        border-radius: 8px;
-    }
-
-    
-
-        .form-control:focus {
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 0.2rem rgba(255, 140, 66, 0.25);
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #ff8c42;
+            --secondary-color: #b22222;
+            --background-color: #fff9f5;
+            --text-color: #333;
         }
 
-    .btn-contact {
-        background-color: var(--primary-color);
-        color: white;
-        padding: 0.8rem 2rem;
-        border: none;
-        border-radius: 8px;
-        font-weight: bold;
-        transition: all 0.3s ease;
-        width: 100%;
-    }
+        body {
 
-        .btn-contact:hover {
-            background-color: #ff7a2e;
-            transform: translateY(-2px);
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
         }
 
-    .back-link {
-        display: inline-block;
-        margin-top: 1rem;
-        color: var(--primary-color);
-        text-decoration: none;
-    }
+        .page-banner {
+            height: 300px;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("/api/placeholder/1200/300");
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin-bottom: 4rem;
+        }
 
-        .back-link:hover {
+      
+        .contact-info-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background-color: var(--background-color);
+            border-radius: 10px;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .contact-text h4 {
+            margin: 0;
             color: var(--secondary-color);
+            font-size: 1.1rem;
         }
 
-    .section-subtitle {
-        color: var(--primary-color);
-        text-align: center;
-        margin-bottom: 2rem;
-    }
+        .form-container {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
 
-    .text-danger {
-        color: #dc3545;
-        font-size: 0.875rem;
-        margin-top: 0.25rem;
-    }
-</style>
+        .form-control {
+            border: 2px solid #ddd;
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+        }
 
-<div class="page-banner">
-    <h1 class="page-title">@ViewBag.Title</h1>
-</div>
+            .form-control:focus {
+                border-color: var(--primary-color);
+                box-shadow: 0 0 0 0.2rem rgba(255, 140, 66, 0.25);
+            }
 
-<div class="container mb-5">
-    <p class="section-subtitle">¡Nos encantaría escucharte! Ponte en contacto con nosotros</p>
+        .btn-contact {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
 
-    <div class="row">
-        <div class="col-lg-5 mb-4">
-            <div class="contact-info-card">
-                <h3 class="mb-4">Información de Contacto</h3>
+            .btn-contact:hover {
+                background-color: #ff7a2e;
+                transform: translateY(-2px);
+            }
 
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-map-marker-alt"></i>
+        .back-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+            .back-link:hover {
+                color: var(--secondary-color);
+            }
+
+        .section-subtitle {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .text-danger {
+            color: #dc3545;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+        }
+
+        .page-header {
+            background-color: #f8e5da;
+            padding: 2rem 0;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-header">
+        <h1 class="display-4">Contáctanos</h1>
+    </div>
+
+    <div class="container mb-5">
+        <p class="section-subtitle">¡Nos encantaría escucharte! Ponte en contacto con nosotros</p>
+
+        <div class="row">
+            <div class="col-lg-5 mb-4">
+                <div class="contact-info-card">
+                    <h3 class="mb-4">Información de Contacto</h3>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Dirección</h4>
+                            <p>Av. Los Panes 123, Lima, Perú</p>
+                        </div>
                     </div>
-                    <div class="contact-text">
-                        <h4>Dirección</h4>
-                        <p>Av. Los Panes 123, Lima, Perú</p>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Teléfono</h4>
+                            <p>+51 923 456 789</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Email</h4>
+                            <p>info@panaderiaartesanal.com</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Horario de Atención</h4>
+                            <p>
+                                Lunes a Sábado: 7:00 AM - 8:00 PM<br>
+                                Domingo: 7:00 AM - 2:00 PM
+                            </p>
+                        </div>
                     </div>
                 </div>
-
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-phone"></i>
-                    </div>
-                    <div class="contact-text">
-                        <h4>Teléfono</h4>
-                        <p>+51 923 456 789</p>
-                    </div>
-                </div>
-
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <div class="contact-text">
-                        <h4>Email</h4>
-                        <p>info@panaderiaartesanal.com</p>
-                    </div>
-                </div>
-
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-clock"></i>
-                    </div>
-                    <div class="contact-text">
-                        <h4>Horario de Atención</h4>
-                        <p>
-                            Lunes a Sábado: 7:00 AM - 8:00 PM<br>
-                            Domingo: 7:00 AM - 2:00 PM
-                        </p>
-                    </div>
-                </div>
-
-                
             </div>
-        </div>
 
-        <div class="col-lg-7">
-            <div class="form-container">
-                <h3 class="mb-4">Envíanos un Mensaje</h3>
-                @using (Html.BeginForm("Crear", "Form", FormMethod.Post, new { @id = "contactForm" }))
-                {
-                    @Html.AntiForgeryToken()
+            <div class="col-lg-7">
+                <div class="form-container">
+                    <h3 class="mb-4">Envíanos un Mensaje</h3>
+                    @using (Html.BeginForm("Crear", "Form", FormMethod.Post, new { @id = "contactForm" }))
+                    {
+                        @Html.AntiForgeryToken()
 
-                    <div class="form-group mb-3">
-                        @Html.LabelFor(model => model.Nombre, new { @class = "form-label" })
-                        @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                        <div class="form-group mb-3">
+                            @Html.LabelFor(model => model.Nombre, new { @class = "form-label" })
+                            @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group mb-3">
+                            @Html.LabelFor(model => model.Correo, new { @class = "form-label" })
+                            @Html.TextBoxFor(model => model.Correo, new { @class = "form-control", @type = "email" })
+                            @Html.ValidationMessageFor(model => model.Correo, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group mb-3">
+                            @Html.LabelFor(model => model.Mensaje, new { @class = "form-label" })
+                            @Html.TextAreaFor(model => model.Mensaje, new { @class = "form-control", @rows = "5" })
+                            @Html.ValidationMessageFor(model => model.Mensaje, "", new { @class = "text-danger" })
+                        </div>
+
+                        <button type="submit" class="btn btn-contact">Enviar Mensaje</button>
+                    }
+
+                    <div>
+                        @Html.ActionLink("Volver al inicio", "Index", "Home", null, new { @class = "back-link" })
                     </div>
-
-                    <div class="form-group mb-3">
-                        @Html.LabelFor(model => model.Correo, new { @class = "form-label" })
-                        @Html.TextBoxFor(model => model.Correo, new { @class = "form-control", @type = "email" })
-                        @Html.ValidationMessageFor(model => model.Correo, "", new { @class = "text-danger" })
-                    </div>
-
-                    <div class="form-group mb-3">
-                        @Html.LabelFor(model => model.Mensaje, new { @class = "form-label" })
-                        @Html.TextAreaFor(model => model.Mensaje, new { @class = "form-control", @rows = "5" })
-                        @Html.ValidationMessageFor(model => model.Mensaje, "", new { @class = "text-danger" })
-                    </div>
-
-                    <button type="submit" class="btn btn-contact">Enviar Mensaje</button>
-                }
-
-                <div>
-                    @Html.ActionLink("Volver al inicio", "Index", "Home", null, new { @class = "back-link" })
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
-}
+    @Scripts.Render("~/bundles/jqueryval")
+</body>
+</html>

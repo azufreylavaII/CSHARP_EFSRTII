@@ -19,7 +19,7 @@ namespace Panaderia.Controllers
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
                 conn.Open();
-                string query = "SELECT id_Producto, nombre, descripcion, precio, stock FROM Productos;";
+                string query = "SELECT id_producto, nombre, descripcion, precio, stock FROM Productos;";
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 MySqlDataReader reader = cmd.ExecuteReader();
 
@@ -27,18 +27,18 @@ namespace Panaderia.Controllers
                 {
                     productos.Add(new Producto
                     {
-                        IdProducto = reader.GetInt32("id_Producto"),
+                        IdProducto = reader.GetInt32("id_producto"),
                         Nombre = reader.GetString("nombre"),
                         Descripcion = reader.IsDBNull(reader.GetOrdinal("descripcion")) ? "" : reader.GetString("descripcion"),
-                        Precio = reader.GetDecimal("precio"),
-                        Stock = reader.GetInt32("stock"),
-                    
+                        Precio = reader.IsDBNull(reader.GetOrdinal("precio")) ? 0 : reader.GetDecimal("precio"),
+                        Stock = reader.IsDBNull(reader.GetOrdinal("stock")) ? 0 : reader.GetInt32("stock")
                     });
                 }
             }
 
             return View(productos);
         }
+
         // Crear producto
         public ActionResult CrearProducto()
         {
@@ -53,20 +53,21 @@ namespace Panaderia.Controllers
                 using (MySqlConnection conn = new MySqlConnection(connectionString))
                 {
                     conn.Open();
-                    string query = "INSERT INTO Productos (IdCategoria, Nombre, Descripcion, Precio, Stock) VALUES (@IdCategoria, @Nombre, @Descripcion, @Precio, @Stock)";
+                    string query = "INSERT INTO Productos (id_categoria, Nombre, Descripcion, Precio, Stock) VALUES (@IdCategoria, @Nombre, @Descripcion, @Precio, @Stock)";
                     MySqlCommand cmd = new MySqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@IdCategoria", producto.IdCategoria);
+                    cmd.Parameters.AddWithValue("@IdCategoria", producto.IdCategoria == 0 ? (object)DBNull.Value : producto.IdCategoria);
                     cmd.Parameters.AddWithValue("@Nombre", producto.Nombre);
-                    cmd.Parameters.AddWithValue("@Descripcion", producto.Descripcion);
+                    cmd.Parameters.AddWithValue("@Descripcion", producto.Descripcion ?? "");
                     cmd.Parameters.AddWithValue("@Precio", producto.Precio);
                     cmd.Parameters.AddWithValue("@Stock", producto.Stock);
-              
+
                     cmd.ExecuteNonQuery();
                 }
                 return RedirectToAction("ListarProductos");
             }
             return View(producto);
         }
+
 
         // Editar producto
         public ActionResult EditarProducto(int id)
@@ -76,22 +77,21 @@ namespace Panaderia.Controllers
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
                 conn.Open();
-                string query = "SELECT id_Producto, nombre, descripcion, precio, stock FROM Productos WHERE id_Producto = @IdProducto";
+                string query = "SELECT id_producto, id_categoria, nombre, descripcion, precio, stock FROM Productos WHERE id_producto = @id_producto";
                 MySqlCommand cmd = new MySqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@IdProducto", id);
+                cmd.Parameters.AddWithValue("@id_producto", id);
                 MySqlDataReader reader = cmd.ExecuteReader();
 
                 if (reader.Read())
                 {
                     producto = new Producto
                     {
-                        IdProducto = reader.GetInt32("id_Producto"),
-              
-                        Nombre = reader.GetString("nombre"),
+                        IdProducto = reader.GetInt32("id_producto"),
+                        IdCategoria = reader.IsDBNull(reader.GetOrdinal("id_categoria")) ? 0 : reader.GetInt32("id_categoria"),
+                        Nombre = reader.IsDBNull(reader.GetOrdinal("nombre")) ? "" : reader.GetString("nombre"),
                         Descripcion = reader.IsDBNull(reader.GetOrdinal("descripcion")) ? "" : reader.GetString("descripcion"),
-                        Precio = reader.GetDecimal("precio"),
-                        Stock = reader.GetInt32("stock"),
-                      
+                        Precio = reader.IsDBNull(reader.GetOrdinal("precio")) ? 0 : reader.GetDecimal("precio"),
+                        Stock = reader.IsDBNull(reader.GetOrdinal("stock")) ? 0 : reader.GetInt32("stock")
                     };
                 }
             }
@@ -110,19 +110,28 @@ namespace Panaderia.Controllers
                 using (MySqlConnection conn = new MySqlConnection(connectionString))
                 {
                     conn.Open();
-                    string query = "UPDATE Productos SET nombre = @Nombre, descripcion = @Descripcion, precio = @Precio, stock = @Stock WHERE id_Producto = @IdProducto";
+                    string query = "UPDATE Productos SET id_categoria = @id_categoria, nombre = @nombre, descripcion = @descripcion, precio = @precio, stock = @stock WHERE id_producto = @id_producto";
                     MySqlCommand cmd = new MySqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@IdProducto", producto.IdProducto);
-                    cmd.Parameters.AddWithValue("@IdCategoria", producto.IdCategoria);
-                    cmd.Parameters.AddWithValue("@Nombre", producto.Nombre);
-                    cmd.Parameters.AddWithValue("@Descripcion", producto.Descripcion);
-                    cmd.Parameters.AddWithValue("@Precio", producto.Precio);
-                    cmd.Parameters.AddWithValue("@Stock", producto.Stock);
-                 
-                    cmd.ExecuteNonQuery();
+
+                    cmd.Parameters.AddWithValue("@id_producto", producto.IdProducto);
+                    cmd.Parameters.AddWithValue("@id_categoria", producto.IdCategoria == 0 ? (object)DBNull.Value : producto.IdCategoria);
+                    cmd.Parameters.AddWithValue("@nombre", string.IsNullOrEmpty(producto.Nombre) ? (object)DBNull.Value : producto.Nombre);
+                    cmd.Parameters.AddWithValue("@descripcion", string.IsNullOrEmpty(producto.Descripcion) ? (object)DBNull.Value : producto.Descripcion);
+                    cmd.Parameters.AddWithValue("@precio", producto.Precio <= 0 ? (object)DBNull.Value : producto.Precio);
+                    cmd.Parameters.AddWithValue("@stock", producto.Stock <= 0 ? (object)DBNull.Value : producto.Stock);
+
+                    int affectedRows = cmd.ExecuteNonQuery();
+
+                    if (affectedRows == 0)
+                    {
+                        ModelState.AddModelError("", "No se pudo actualizar el producto.");
+                        return View(producto);
+                    }
                 }
+
                 return RedirectToAction("ListarProductos");
             }
+
             return View(producto);
         }
 
@@ -132,14 +141,39 @@ namespace Panaderia.Controllers
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
                 conn.Open();
-                string query = "DELETE FROM Productos WHERE id_producto = @IdProducto";
-                MySqlCommand cmd = new MySqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@IdProducto", id);
-                cmd.ExecuteNonQuery();
+
+                // Verificar si el producto existe antes de eliminarlo
+                string queryCheck = "SELECT COUNT(*) FROM Productos WHERE id_producto = @id_producto";
+                using (MySqlCommand cmdCheck = new MySqlCommand(queryCheck, conn))
+                {
+                    cmdCheck.Parameters.AddWithValue("@id_producto", id);
+                    int count = Convert.ToInt32(cmdCheck.ExecuteScalar());
+
+                    if (count == 0)
+                    {
+                        ModelState.AddModelError("", "El producto no existe o ya ha sido eliminado.");
+                        return RedirectToAction("ListarProductos"); // O podrías redirigir a una página de error
+                    }
+                }
+
+                // Ejecutar la eliminación
+                string query = "DELETE FROM Productos WHERE id_producto = @id_producto";
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@id_producto", id);
+                    int rowsAffected = cmd.ExecuteNonQuery();
+
+                    if (rowsAffected == 0)
+                    {
+                        ModelState.AddModelError("", "No se pudo eliminar el producto.");
+                        return RedirectToAction("ListarProductos");
+                    }
+                }
             }
 
             return RedirectToAction("ListarProductos");
         }
+
 
 
         //Listar usuarios
@@ -150,7 +184,7 @@ namespace Panaderia.Controllers
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
                 conn.Open();
-                string query = "SELECT id_usuario, Nombre, Correo, direccion, telefono, Rol FROM Usuarios;";
+                string query = "SELECT id_usuario, Nombre, Correo, direccion, telefono, Rol, fecha_registro FROM Usuarios;";
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 MySqlDataReader reader = cmd.ExecuteReader();
 
@@ -164,13 +198,14 @@ namespace Panaderia.Controllers
                         direccion = reader.IsDBNull(reader.GetOrdinal("direccion")) ? "" : reader.GetString("direccion"),
                         telefono = reader.IsDBNull(reader.GetOrdinal("telefono")) ? "" : reader.GetString("telefono"),
                         rol = reader.IsDBNull(reader.GetOrdinal("Rol")) ? "Sin rol" : reader.GetString("Rol"),
-
+                        fecha_registro = reader.IsDBNull(reader.GetOrdinal("fecha_registro")) ? DateTime.MinValue : reader.GetDateTime("fecha_registro")
                     });
                 }
             }
 
             return View(usuarios);
         }
+
         // Crear usuario
         public ActionResult CrearUsuario()
         {
@@ -185,23 +220,92 @@ namespace Panaderia.Controllers
                 using (MySqlConnection conn = new MySqlConnection(connectionString))
                 {
                     conn.Open();
-                    string query = "INSERT INTO usuarios (Nombre, Correo, Contraseña, Direccion, Telefono, Rol, FechaRegistro) VALUES (@Nombre, @Correo, @Contraseña, @Direccion, @Telefono, @Rol, @FechaRegistro)";
+
+                    if (usuario.fecha_registro == default(DateTime))
+                    {
+                        usuario.fecha_registro = DateTime.Now;
+                    }
+
+                    string query = "INSERT INTO Usuarios (Nombre, Correo, contrasena, Direccion, Telefono, Rol, fecha_registro) " +
+                                   "VALUES (@Nombre, @Correo, @contrasena, @Direccion, @Telefono, @Rol, @FechaRegistro)";
+
                     MySqlCommand cmd = new MySqlCommand(query, conn);
+
                     cmd.Parameters.AddWithValue("@Nombre", usuario.nombre);
                     cmd.Parameters.AddWithValue("@Correo", usuario.correo);
-                    cmd.Parameters.AddWithValue("@Contraseña", usuario.contrasena);
-                    cmd.Parameters.AddWithValue("@Direccion", usuario.direccion ?? string.Empty);
-                    cmd.Parameters.AddWithValue("@Telefono", usuario.telefono ?? string.Empty);
-                    cmd.Parameters.AddWithValue("@Rol", usuario.rol ?? "Sin rol");
+                    cmd.Parameters.AddWithValue("@contrasena", string.IsNullOrEmpty(usuario.contrasena) ? "123456" : usuario.contrasena);
+                    cmd.Parameters.AddWithValue("@Direccion", string.IsNullOrEmpty(usuario.direccion) ? DBNull.Value : (object)usuario.direccion);
+                    cmd.Parameters.AddWithValue("@Telefono", string.IsNullOrEmpty(usuario.telefono) ? DBNull.Value : (object)usuario.telefono);
+                    cmd.Parameters.AddWithValue("@Rol", string.IsNullOrEmpty(usuario.rol) ? "Sin rol" : usuario.rol);
                     cmd.Parameters.AddWithValue("@FechaRegistro", usuario.fecha_registro);
+
                     cmd.ExecuteNonQuery();
                 }
+
                 return RedirectToAction("ListarUsuarios");
             }
             return View(usuario);
         }
 
+
         // Editar usuario
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // Eliminar usuario
+        public ActionResult EliminarUsuario(int id)
+        {
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                conn.Open();
+
+
+                string queryCheck = "SELECT COUNT(*) FROM Usuarios WHERE id_usuario = @id_usuario";
+                using (MySqlCommand cmdCheck = new MySqlCommand(queryCheck, conn))
+                {
+                    cmdCheck.Parameters.AddWithValue("@id_usuario", id);
+                    int count = Convert.ToInt32(cmdCheck.ExecuteScalar());
+
+                    if (count == 0)
+                    {
+
+                        ModelState.AddModelError("", "El usuario no existe o ya ha sido eliminado.");
+                        return RedirectToAction("ListarUsuarios");
+                    }
+                }
+
+
+                string query = "DELETE FROM Usuarios WHERE id_usuario = @id_usuario";
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@id_usuario", id);
+                    int rowsAffected = cmd.ExecuteNonQuery();
+
+                    if (rowsAffected == 0)
+                    {
+
+                        ModelState.AddModelError("", "No se pudo eliminar el usuario.");
+                        return RedirectToAction("ListarUsuarios");
+                    }
+                }
+            }
+
+
+            return RedirectToAction("ListarUsuarios");
+        }
+
+
         public ActionResult EditarUsuario(int id)
         {
             Usuario usuario = null;
@@ -209,23 +313,22 @@ namespace Panaderia.Controllers
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
                 conn.Open();
-                string query = "SELECT IdUsuario, Nombre, Correo, Contraseña, Direccion, Telefono, Rol, FechaRegistro FROM usuarios WHERE IdUsuario = @IdUsuario";
+                string query = "SELECT id_usuario, Nombre, Correo, contrasena, direccion, telefono, rol FROM Usuarios WHERE id_usuario = @id_usuario";
                 MySqlCommand cmd = new MySqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@IdUsuario", id);
+                cmd.Parameters.AddWithValue("@id_usuario", id);
                 MySqlDataReader reader = cmd.ExecuteReader();
 
                 if (reader.Read())
                 {
                     usuario = new Usuario
                     {
-                        id_usuario = reader.GetInt32("IdUsuario"),
+                        id_usuario = reader.GetInt32("id_usuario"),
                         nombre = reader.GetString("Nombre"),
                         correo = reader.GetString("Correo"),
-                        contrasena = reader.GetString("Contraseña"),
-                        direccion = reader.IsDBNull(reader.GetOrdinal("Direccion")) ? "" : reader.GetString("Direccion"),
-                        telefono = reader.IsDBNull(reader.GetOrdinal("Telefono")) ? "" : reader.GetString("Telefono"),
-                        rol = reader.IsDBNull(reader.GetOrdinal("Rol")) ? "Sin rol" : reader.GetString("Rol"),
-                        fecha_registro = reader.GetDateTime("FechaRegistro")
+                        contrasena = reader.GetString("contrasena"),
+                        direccion = reader.IsDBNull(reader.GetOrdinal("direccion")) ? "" : reader.GetString("direccion"),
+                        telefono = reader.IsDBNull(reader.GetOrdinal("telefono")) ? "" : reader.GetString("telefono"),
+                        rol = reader.IsDBNull(reader.GetOrdinal("rol")) ? "Cliente" : reader.GetString("rol")
                     };
                 }
             }
@@ -244,35 +347,43 @@ namespace Panaderia.Controllers
                 using (MySqlConnection conn = new MySqlConnection(connectionString))
                 {
                     conn.Open();
-                    string query = "UPDATE usuarios SET Nombre = @Nombre, Correo = @Correo, Contraseña = @Contraseña, Direccion = @Direccion, Telefono = @Telefono, Rol = @Rol WHERE IdUsuario = @IdUsuario";
+                    string query = "UPDATE Usuarios SET Nombre = @Nombre, Correo = @Correo, Direccion = @Direccion, Telefono = @Telefono, Rol = @Rol";
+
+                    if (!string.IsNullOrEmpty(usuario.contrasena))
+                    {
+                        query += ", contrasena = @Contrasena";
+                    }
+
+                    query += " WHERE id_usuario = @IdUsuario";
+
                     MySqlCommand cmd = new MySqlCommand(query, conn);
+
                     cmd.Parameters.AddWithValue("@IdUsuario", usuario.id_usuario);
                     cmd.Parameters.AddWithValue("@Nombre", usuario.nombre);
                     cmd.Parameters.AddWithValue("@Correo", usuario.correo);
-                    cmd.Parameters.AddWithValue("@Contraseña", usuario.contrasena);
-                    cmd.Parameters.AddWithValue("@Direccion", usuario.direccion ?? string.Empty);
-                    cmd.Parameters.AddWithValue("@Telefono", usuario.telefono ?? string.Empty);
-                    cmd.Parameters.AddWithValue("@Rol", usuario.rol ?? "Sin rol");
-                    cmd.ExecuteNonQuery();
+                    cmd.Parameters.AddWithValue("@Direccion", string.IsNullOrEmpty(usuario.direccion) ? DBNull.Value : (object)usuario.direccion);
+                    cmd.Parameters.AddWithValue("@Telefono", string.IsNullOrEmpty(usuario.telefono) ? DBNull.Value : (object)usuario.telefono);
+                    cmd.Parameters.AddWithValue("@Rol", string.IsNullOrEmpty(usuario.rol) ? "Cliente" : usuario.rol);
+
+                    if (!string.IsNullOrEmpty(usuario.contrasena))
+                    {
+                        cmd.Parameters.AddWithValue("@Contrasena", usuario.contrasena);
+                    }
+
+                    int affectedRows = cmd.ExecuteNonQuery();
+
+                    if (affectedRows == 0)
+                    {
+                        ModelState.AddModelError("", "No se pudo actualizar el usuario.");
+                        return View(usuario);
+                    }
                 }
+
                 return RedirectToAction("ListarUsuarios");
             }
+
             return View(usuario);
         }
 
-        // Eliminar usuario
-        public ActionResult EliminarUsuario(int id)
-        {
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
-            {
-                conn.Open();
-                string query = "DELETE FROM usuarios WHERE IdUsuario = @IdUsuario";
-                MySqlCommand cmd = new MySqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@IdUsuario", id);
-                cmd.ExecuteNonQuery();
-            }
-
-            return RedirectToAction("ListarUsuarios");
-        }
     }
 }

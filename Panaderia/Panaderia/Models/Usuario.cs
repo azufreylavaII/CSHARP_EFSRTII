@@ -25,7 +25,7 @@ namespace Panaderia.Models
             public string telefono { get; set; } // Teléfono del usuario
 
            // public string rol { get; set; } // Rol (admin, cliente, etc.)
-        public string rol { get; set; } = "Cliente"; // Valor por defecto
+        public string rol { get; set; } = "cliente"; // Valor por defecto
 
 
         public string imagen_url { get; set; } // URL de la imagen de perfil

@@ -8,80 +8,144 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <style>
+
+        /* Variables para colores */
+        :root {
+            --primary-brown: #8B4513;
+            --light-brown: #DEB887;
+            --cream: #FFF8DC;
+            --dark-brown: #3E2723;
+            --gold: #DAA520;
+        }
+
+        /* Estilos para la navbar */
         .navbar-custom {
-            background-color: #B2967E;
-            padding: 15px;
+            background-color: var(--cream);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 0.5rem 1rem;
         }
 
-            .navbar-custom .navbar-brand {
-                color: white;
-                font-size: 1.5rem;
-                font-weight: bold;
-            }
-
-            .navbar-custom .nav-link {
-                color: white;
-                font-size: 1.1rem;
-                margin-right: 10px;
-                transition: color 0.3s ease-in-out;
-            }
-
-                .navbar-custom .nav-link:hover {
-                    color: #ffe0b3;
-                }
-
-            .navbar-custom .btn-login {
-                background-color: white;
-                color: #ff8c42;
-                border-radius: 20px;
-                padding: 5px 15px;
-                transition: background-color 0.3s ease-in-out;
-            }
-
-                .navbar-custom .btn-login:hover {
-                    background-color: #ffe0b3;
-                    color: #ff8c42;
-                }
-
-        .footer-custom {
-            background-color: #B2967E;
-            color: white;
-            padding: 20px 0;
-        }
-
-            .footer-custom a {
-                color: white;
-                text-decoration: none;
-                margin: 0 10px;
-                transition: color 0.3s ease-in-out;
-            }
-
-                .footer-custom a:hover {
-                    color: #ffe0b3;
-                }
-
-        .footer-icons i {
+        .navbar-brand {
+            color: var(--primary-brown) !important;
+            font-family: 'Georgia', serif;
+            font-weight: bold;
             font-size: 1.5rem;
-            margin: 0 10px;
         }
 
-        .body-content {
-            min-height: 100vh; 
-            width: 100vw; 
-            display: flex;
-            flex-direction: column;
-          
-            padding: 20px;
-            background-color: #f8f9fa; 
+            .navbar-brand img {
+                transition: transform 0.3s ease;
+            }
+
+            .navbar-brand:hover img {
+                transform: scale(1.05);
+            }
+
+        .nav-link {
+            color: var(--dark-brown) !important;
+            font-weight: 500;
+            padding: 0.5rem 1rem !important;
+            transition: color 0.3s ease;
         }
 
+            .nav-link:hover {
+                color: var(--gold) !important;
+            }
 
+        /* Botón de login */
+        .btn-login {
+            background-color: var(--primary-brown);
+            color: white !important;
+            border-radius: 20px;
+            padding: 0.5rem 1.5rem !important;
+            transition: all 0.3s ease;
+        }
+
+            .btn-login:hover {
+                background-color: var(--dark-brown);
+                transform: translateY(-2px);
+            }
+
+        /* Carrito de compras */
+        .cart-icon {
+            position: relative;
+            margin-right: 1rem;
+        }
+
+            .cart-icon i {
+                font-size: 1.5rem;
+                color: var(--primary-brown);
+            }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--gold);
+            color: white;
+            border-radius: 50%;
+            padding: 0.2rem 0.5rem;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        /* Footer personalizado */
+        .footer-custom {
+            background-color: var(--cream);
+            padding: 2rem 0;
+            margin-top: 3rem;
+            border-top: 3px solid var(--light-brown);
+        }
+
+            .footer-custom p {
+                color: var(--dark-brown);
+                margin-bottom: 1rem;
+            }
+
+        .footer-icons {
+            margin: 1.5rem 0;
+        }
+
+            .footer-icons a {
+                color: var(--primary-brown);
+                font-size: 1.5rem;
+                margin: 0 1rem;
+                transition: all 0.3s ease;
+            }
+
+                .footer-icons a:hover {
+                    color: var(--gold);
+                    transform: translateY(-3px);
+                }
+
+        .footer-custom a {
+            color: var(--primary-brown);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+            .footer-custom a:hover {
+                color: var(--gold);
+            }
+
+        /* Responsive */
+        @@media (max-width: 768px) {
+            .navbar-custom {
+                padding: 0.5rem;
+            }
+
+            .footer-icons a {
+                margin: 0 0.5rem;
+            }
+        }
     </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-custom">
         <div class="container">
+       
+
             <a href="@Url.Action("Index", "Home")" class="navbar-brand">
                 <img src="/Content/Images/logo.png" alt="Logo Pan y Tradición" height="40" class="me-2">
                 Pan y Tradición
@@ -94,15 +158,31 @@
                     <li class="nav-item">@Html.ActionLink("Inicio", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                     <li class="nav-item">@Html.ActionLink("Productos", "Index", "Productos", new { area = "" }, new { @class = "nav-link" })</li>
                     <li class="nav-item">@Html.ActionLink("Contacto", "Crear", "Form", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li class="nav-item">@Html.ActionLink("Mi cuenta", "MiPerfil", "Usuarios", new { area = "" }, new { @class = "nav-link" })</li>
+                    
+                    @if (Session["UsuarioID"] != null)
+                    {
+                        <li class="nav-item">@Html.ActionLink("Mi cuenta", "MiPerfil", "Usuarios", new { area = "" }, new { @class = "nav-link" })</li>
+                    }
+                    @if (Session["UsuarioID"] != null && Session["Rol"].ToString() == "admin")
+                    {
+
+                        <li class="nav-item">@Html.ActionLink("Lista de productos", "ListarProductos", "Listas", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li class="nav-item">@Html.ActionLink("Lista de usuarios", "ListarUsuarios", "Listas", new { area = "" }, new { @class = "nav-link" })</li>
+                    }
+
                 </ul>
 
+                <div class="cart-icon">
+                    <a href="@((Session["UsuarioID"] != null) ? Url.Action("VerCarrito", "Productos") : Url.Action("Login", "Usuarios"))">
+                        <i class="bi bi-cart3"></i>
+                        
+                    </a>
+                </div>
+
                 <ul class="navbar-nav">
-                    @if (Session["UsuarioID"] != null) // Si el usuario está logueado
+                    @if (Session["UsuarioID"] != null)
                     {
-                        <li class="nav-item">
-                            <span class="navbar-text me-3">Bienvenido, @Session["UsuarioNombre"]</span>
-                        </li>
+                        
                         <li class="nav-item">
                             @Html.ActionLink("Cerrar Sesión", "Logout", "Usuarios", new { area = "" }, new { @class = "btn btn-danger" })
                         </li>
@@ -113,6 +193,7 @@
                             @Html.ActionLink("Iniciar Sesión", "Login", "Usuarios", new { area = "" }, new { @class = "btn btn-login" })
                         </li>
                     }
+
                 </ul>
             </div>
         </div>
