@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Panaderia.Models.Producto>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Lista de Productos</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Cantidad</th>
+            <th>Acción</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var producto in Model)
+        {
+        <tr>
+            <td>@producto.Nombre</td>
+            <td>@producto.Precio.ToString("C")</td>
+            <td>
+                <input type="number" id="cantidad-@producto.IdProducto" name="cantidad" min="1" value="1" class="form-control" style="width: 60px;" />
+            </td>
+            <td>
+                <form action="@Url.Action("AgregarAlCarrito", "Productos")" method="post">
+                    <input type="hidden" name="idProducto" value="@producto.IdProducto" />
+                    <input type="hidden" id="input-cantidad-@producto.IdProducto" name="cantidad" value="1" />
+                    <button type="submit" class="btn btn-success" onclick="setCantidad(@producto.IdProducto)">Agregar al Carrito</button>
+                </form>
+            </td>
+        </tr> }            
+    </tbody> 
+</table>
+
+<script>
+    function setCantidad(productoId) {
+        var cantidad = document.getElementById("cantidad-" + productoId).value;
+        document.getElementById("input-cantidad-" + productoId).value = cantidad;
+    }
+</script>

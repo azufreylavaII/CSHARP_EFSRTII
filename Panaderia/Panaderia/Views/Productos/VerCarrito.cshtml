@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Panaderia.Models.CarritoItem>
+
+@{
+    ViewBag.Title = "VerCarrito";
+}
+
+@{
+    decimal total = Model.Sum(item => item.Subtotal);
+}
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Producto</th>
+            <th>Precio Unitario</th>
+            <th>Cantidad</th>
+            <th>Subtotal</th>
+           
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@item.NombreProducto</td>
+            <td>@item.PrecioUnitario.ToString("C")</td>
+            <td>@item.Cantidad</td>
+            <td>@item.Subtotal.ToString("C")</td>
+            <td>
+                <form action="@Url.Action("EliminarDelCarrito", "Productos")" method="post">
+                    <input type="hidden" name="idProducto" value="@item.IdProducto " />
+                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                </form>
+                <p>ID Producto: @item.IdProducto</p>
+
+            </td>
+
+        </tr>
+       }
+        <tr>
+            <td colspan="3" class="text-right"><strong>Total:</strong></td>
+            <td><strong>@total.ToString("C")</strong></td>
+
+        </tr>
+    </tbody>
+</table>
+
+<form action="@Url.Action("TerminarPedido", "Productos")" method="post">
+    <button type="submit" class="btn btn-success">Terminar Pedido</button>
+</form>

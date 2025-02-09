@@ -5,9 +5,8 @@
     "\\Panaderia\\Panaderia",
     "\\Panaderia\\Panaderia\\Controllers",
     "\\Panaderia\\Panaderia\\Models",
-    "\\Panaderia\\Panaderia\\Views",
-    "\\Panaderia\\Panaderia\\Views\\Usuarios"
+    "\\Panaderia\\Panaderia\\Views"
   ],
-  "SelectedNode": "\\Panaderia\\Panaderia\\Controllers\\ListasController.cs",
+  "SelectedNode": "\\Panaderia\\Panaderia\\Controllers\\UsuariosController.cs",
   "PreviewInSolutionExplorer": false
 }

@@ -1,0 +1,18 @@
+﻿@model Panaderia.Models.Pedido
+
+@{
+    ViewBag.Title = "Confirmación de Pedido";
+}
+
+<h2>Pedido Confirmado</h2>
+<p>Gracias por tu compra. Tu pedido ha sido registrado con éxito.</p>
+@if (Model != null)
+{
+    <p>Número de Pedido: @Model.IdPedido</p>
+}
+else
+{
+    <p>Error: No se encontró el pedido.</p>
+}
+
+<a href="@Url.Action("Index", "Productos")" class="btn btn-primary">Seguir Comprando</a>

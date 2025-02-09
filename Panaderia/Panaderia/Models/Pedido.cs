@@ -27,6 +27,7 @@ namespace Panaderia.Models
         [Required]
         public decimal Total { get; set; }
 
+        public String MetodoPago { get; set; }
         // Relaciones
         public Usuario Usuario { get; set; }
         public ICollection<DetallePedido> Detalles { get; set; }

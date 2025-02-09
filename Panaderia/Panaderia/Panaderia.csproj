@@ -189,7 +189,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Carrito.cs" />
+    <Compile Include="Models\CarritoItem.cs" />
     <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\DataBaseConnection.cs" />
     <Compile Include="Models\DetallePedido.cs" />
@@ -267,6 +267,9 @@
     <Content Include="Views\Listas\EditarUsuario.cshtml" />
     <Content Include="Views\Usuarios\Login.cshtml" />
     <Content Include="Views\Usuarios\Registrar.cshtml" />
+    <Content Include="Views\Productos\Index.cshtml" />
+    <Content Include="Views\Productos\VerCarrito.cshtml" />
+    <Content Include="Views\Productos\ConfirmacionPedido.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -276,7 +279,6 @@
     <Folder Include="Views\HistorialCompras\" />
     <Folder Include="Views\Pagos\" />
     <Folder Include="Views\Pedidos\" />
-    <Folder Include="Views\Productos\" />
     <Folder Include="Views\Roles\" />
   </ItemGroup>
   <ItemGroup>
