@@ -10,6 +10,8 @@ namespace Panaderia.Controllers
 {
     public class UsuariosController : Controller
     {
+        private string connectionString = ConfigurationManager.ConnectionStrings["MySqlConnection"].ConnectionString;
+
         // Vista para el registro
         public ActionResult Registrar()
         {
@@ -21,7 +23,7 @@ namespace Panaderia.Controllers
         {
             if (ModelState.IsValid)
             {
-                string connectionString = ConfigurationManager.ConnectionStrings["MySqlConnection"].ConnectionString;
+                //string connectionString = ConfigurationManager.ConnectionStrings["MySqlConnection"].ConnectionString;
 
                 using (MySqlConnection connection = new MySqlConnection(connectionString))
                 {
@@ -124,6 +126,8 @@ namespace Panaderia.Controllers
                             string storedPassword = reader["contrasena"].ToString();
                             if (BCrypt.Net.BCrypt.Verify(contrasena, storedPassword))
                             {
+                                string rol = reader["rol"].ToString();
+                                Console.WriteLine("Rol guardado en la sesión: " + rol);
                                 // Si la contraseña es correcta, guardar los datos en la sesión
                                 Session["UsuarioID"] = reader["id_usuario"];
                                 Session["UsuarioNombre"] = reader["nombre"];
@@ -131,7 +135,12 @@ namespace Panaderia.Controllers
 
                                 // Mensaje de éxito
                                 ViewBag.Mensaje = "Login exitoso.";
-                                return RedirectToAction("Dashboard");  // Redirigir al Dashboard
+                                //return RedirectToAction("ListarProductos");  // Redirigir al Dashboard
+                                System.Diagnostics.Debug.WriteLine("Rol guardado en sesión: " + Session["Rol"]);
+
+                                return RedirectToAction("ListarProductos", "Productos");
+
+
                             }
                             else
                             {

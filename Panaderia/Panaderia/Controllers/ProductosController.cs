@@ -13,7 +13,92 @@ namespace Panaderia.Controllers
     {
         private string connectionString = ConfigurationManager.ConnectionStrings["MySqlConnection"].ConnectionString;
 
-        
+        public ActionResult ListarProductos()
+        {
+            // Verificar si el usuario tiene rol de "Admin"
+            if (Session["Rol"] == null || Session["Rol"].ToString() != "Admin")
+            {
+                return RedirectToAction("SinPermiso", "Home"); // Redirige a una vista de error
+            }
+
+            var productos = new List<Producto>();
+
+            try
+            {
+                using (var conn = new MySqlConnection(connectionString))
+                {
+                    conn.Open();
+                    ViewBag.Mensaje = "Conexión a la base de datos exitosa."; // ✅ Mensaje de prueba
+                    string query = "SELECT id_producto, nombre, descripcion, precio, stock, estado FROM Productos;";
+
+                    using (var cmd = new MySqlCommand(query, conn))
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            productos.Add(new Producto
+                            {
+                                IdProducto = reader.GetInt32("id_producto"),
+                                Nombre = reader.GetString("nombre"),
+                                Descripcion = reader.IsDBNull(reader.GetOrdinal("descripcion")) ? string.Empty : reader.GetString("descripcion"),
+                                Precio = reader.GetDecimal("precio"),
+                                Stock = reader.GetInt32("stock"),
+                                Estado = reader.GetBoolean("estado")
+                            });
+                        }
+                    }
+
+                    ViewBag.Mensaje = "Productos cargados correctamente."; // ✅ Si llega aquí, la consulta funcionó
+                }
+            }
+            catch (Exception ex)
+            {
+                ViewBag.ErrorMessage = "Error al cargar los productos: " + ex.Message; // ✅ Mostrar error en la vista
+            }
+
+            return View(productos);  // Devuelve la vista con los datos o vacía si hubo error
+        }
+
+
+        // GET: Crear producto
+        public ActionResult Crear()
+        {
+            return View();
+        }
+
+        // POST: Crear producto
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Crear(Producto producto)
+        {
+            if (!ModelState.IsValid) return View(producto);
+
+            try
+            {
+                using (var conn = new MySqlConnection(connectionString))
+                {
+                    conn.Open();
+                    string query = "INSERT INTO productos (Nombre, Descripcion, Precio, Stock, Estado) VALUES (@Nombre, @Descripcion, @Precio, @Stock, @Estado)";
+                    using (var cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Nombre", producto.Nombre);
+                        cmd.Parameters.AddWithValue("@Descripcion", producto.Descripcion ?? string.Empty);
+                        cmd.Parameters.AddWithValue("@Precio", producto.Precio);
+                        cmd.Parameters.AddWithValue("@Stock", producto.Stock);
+                        cmd.Parameters.AddWithValue("@Estado", producto.Estado);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                return RedirectToAction("ListarProductos");
+            }
+            catch (Exception ex)
+            {
+                TempData["ErrorMessage"] = "Error al registrar el producto: " + ex.Message;
+                return View();
+            }
+        }
+
+
         public ActionResult Index()
         {
             List<Producto> productos = new List<Producto>();

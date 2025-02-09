@@ -1,23 +1,56 @@
-﻿@model IEnumerable<Panaderia.Models.Producto>
+﻿@model List<Panaderia.Models.Producto>
 
 @{
-    ViewBag.Title = "Lista de Productos";
+    ViewBag.Title = "ListarProductos";
+}
+<p>Rol en sesión: @Session["Rol"]</p>
+
+
+<h2>Gestión de Productos</h2>
+@if (ViewBag.Mensaje != null)
+{
+    <div class="alert alert-success">@ViewBag.Mensaje</div>
 }
 
-<h2>Lista de Productos</h2>
+@if (ViewBag.ErrorMessage != null)
+{
+    <div class="alert alert-danger">@ViewBag.ErrorMessage</div>
+}
 
-<p>
-    <a href="@Url.Action("CrearProducto")" class="btn btn-primary">Crear Producto</a>
-</p>
+<!-- Formulario para Crear Producto -->
+<div>
+    <h4>Crear Producto</h4>
+    @using (Html.BeginForm("CrearProducto", "Productos", FormMethod.Post))
+    {
+        <label for="Nombre">Nombre</label>
+        <input type="text" id="Nombre" name="Nombre" required />
 
-<table class="table">
+        <label for="Descripcion">Descripción</label>
+        <input type="text" id="Descripcion" name="Descripcion" />
+
+        <label for="Precio">Precio</label>
+        <input type="number" id="Precio" name="Precio" required />
+
+        <label for="Stock">Stock</label>
+        <input type="number" id="Stock" name="Stock" required />
+
+        <label for="Estado">Estado</label>
+        <input type="checkbox" id="Estado" name="Estado" />
+
+        <button type="submit">Crear Producto</button>
+    }
+</div>
+
+<!-- Tabla para Listar Productos -->
+<h4>Lista de Productos</h4>
+<table>
     <thead>
         <tr>
             <th>Nombre</th>
             <th>Descripción</th>
             <th>Precio</th>
             <th>Stock</th>
-
+            <th>Estado</th>
             <th>Acciones</th>
         </tr>
     </thead>
@@ -29,10 +62,26 @@
                 <td>@producto.Descripcion</td>
                 <td>@producto.Precio</td>
                 <td>@producto.Stock</td>
-              
+                <td>@(producto.Estado ? "Activo" : "Inactivo")</td>
                 <td>
-                    <a href="@Url.Action("EditarProducto", new { id = producto.IdProducto })" class="btn btn-warning">Editar</a>
-                    <a href="@Url.Action("EliminarProducto", new { id = producto.IdProducto })" class="btn btn-danger" onclick="return confirm('¿Estás seguro de eliminar este producto?');">Eliminar</a>
+                    <!-- Botón para editar producto -->
+                    @using (Html.BeginForm("ActualizarProducto", "Productos", FormMethod.Post))
+                    {
+                        <input type="hidden" name="IdProducto" value="@producto.IdProducto" />
+                        <input type="text" name="Nombre" value="@producto.Nombre" />
+                        <input type="text" name="Descripcion" value="@producto.Descripcion" />
+                        <input type="number" name="Precio" value="@producto.Precio" />
+                        <input type="number" name="Stock" value="@producto.Stock" />
+                        <input type="checkbox" name="Estado" @(producto.Estado ? "checked" : "") />
+                        <button type="submit">Actualizar</button>
+                    }
+
+                    <!-- Botón para eliminar producto -->
+                    @using (Html.BeginForm("EliminarProducto", "Productos", FormMethod.Post))
+                    {
+                        <input type="hidden" name="id" value="@producto.IdProducto" />
+                        <button type="submit" onclick="return confirm('¿Estás seguro de eliminar este producto?');">Eliminar</button>
+                    }
                 </td>
             </tr>
         }
