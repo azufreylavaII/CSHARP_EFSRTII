@@ -1,4 +1,6 @@
-﻿@{
+﻿@model List<Panaderia.Models.Producto>
+
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -67,16 +69,16 @@
             padding-bottom: 1rem;
         }
 
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background-color: var(--primary-color);
-        }
+            .section-title::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 80px;
+                height: 3px;
+                background-color: var(--primary-color);
+            }
 
         .historia-section {
             padding: 6rem 0;
@@ -133,9 +135,9 @@
             transition: transform 0.3s ease;
         }
 
-        .product-card:hover {
-            transform: translateY(-5px);
-        }
+            .product-card:hover {
+                transform: translateY(-5px);
+            }
 
         .product-image {
             width: 100%;
@@ -281,32 +283,20 @@
         </div>
     </section>
 
+
+
     <div class="container">
         <section id="productos">
             <h2 class="section-title">Nuestros Productos</h2>
             <div class="row">
-                <div class="col-md-3">
-                    <div class="product-card">
-                        <img src="/Content/Images/bolleria1.jpg" alt="Bollería 1" class="product-image">
-                        <h3 class="product-title">Croissant Clásico</h3>
-                        <p class="product-price">S/ 14.00</p>
-                    </div>
-                </div>
-                <!-- Repite para otros productos -->
-            </div>
-        </section>
-
-        <section>
-            <h2 class="section-title">Nuestra Despensa</h2>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="product-card">
-                        <img src="/Content/Images/despensa1.jpg" alt="Mermelada de fresa" class="product-image">
-                        <h3 class="product-title">Mermelada de Fresa Artesanal</h3>
-                        <p class="product-price">S/ 11.00</p>
-                    </div>
-                </div>
-                <!-- Repite para otros productos -->
+                @foreach (var producto in Model)
+                {
+    <div class="col-md-3">
+        <div class="product-card">
+            <h3 class="product-title">@producto.Nombre</h3>
+            <p class="product-price">S/ @producto.Precio.ToString("0.00")</p>
+        </div>
+    </div>            }
             </div>
         </section>
     </div>

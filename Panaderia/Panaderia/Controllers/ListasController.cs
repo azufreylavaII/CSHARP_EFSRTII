@@ -19,7 +19,7 @@ namespace Panaderia.Controllers
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
                 conn.Open();
-                string query = "SELECT IdProducto, Nombre, Descripcion, Precio, Stock, Estado FROM productos;";
+                string query = "SELECT id_Producto, nombre, descripcion, precio, stock FROM Productos;";
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 MySqlDataReader reader = cmd.ExecuteReader();
 
@@ -27,12 +27,12 @@ namespace Panaderia.Controllers
                 {
                     productos.Add(new Producto
                     {
-                        IdProducto = reader.GetInt32("IdProducto"),
-                        Nombre = reader.GetString("Nombre"),
-                        Descripcion = reader.IsDBNull(reader.GetOrdinal("Descripcion")) ? "" : reader.GetString("Descripcion"),
-                        Precio = reader.GetDecimal("Precio"),
-                        Stock = reader.GetInt32("Stock"),
-                        Estado = reader.GetBoolean("Estado")
+                        IdProducto = reader.GetInt32("id_Producto"),
+                        Nombre = reader.GetString("nombre"),
+                        Descripcion = reader.IsDBNull(reader.GetOrdinal("descripcion")) ? "" : reader.GetString("descripcion"),
+                        Precio = reader.GetDecimal("precio"),
+                        Stock = reader.GetInt32("stock"),
+                    
                     });
                 }
             }
@@ -53,14 +53,14 @@ namespace Panaderia.Controllers
                 using (MySqlConnection conn = new MySqlConnection(connectionString))
                 {
                     conn.Open();
-                    string query = "INSERT INTO productos (IdCategoria, Nombre, Descripcion, Precio, Stock, Estado) VALUES (@IdCategoria, @Nombre, @Descripcion, @Precio, @Stock, @Estado)";
+                    string query = "INSERT INTO Productos (IdCategoria, Nombre, Descripcion, Precio, Stock) VALUES (@IdCategoria, @Nombre, @Descripcion, @Precio, @Stock)";
                     MySqlCommand cmd = new MySqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@IdCategoria", producto.IdCategoria);
                     cmd.Parameters.AddWithValue("@Nombre", producto.Nombre);
                     cmd.Parameters.AddWithValue("@Descripcion", producto.Descripcion);
                     cmd.Parameters.AddWithValue("@Precio", producto.Precio);
                     cmd.Parameters.AddWithValue("@Stock", producto.Stock);
-                    cmd.Parameters.AddWithValue("@Estado", producto.Estado);
+              
                     cmd.ExecuteNonQuery();
                 }
                 return RedirectToAction("ListarProductos");
@@ -76,7 +76,7 @@ namespace Panaderia.Controllers
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
                 conn.Open();
-                string query = "SELECT IdProducto, IdCategoria, Nombre, Descripcion, Precio, Stock, Estado FROM productos WHERE IdProducto = @IdProducto";
+                string query = "SELECT id_Producto, nombre, descripcion, precio, stock FROM Productos WHERE id_Producto = @IdProducto";
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@IdProducto", id);
                 MySqlDataReader reader = cmd.ExecuteReader();
@@ -85,13 +85,13 @@ namespace Panaderia.Controllers
                 {
                     producto = new Producto
                     {
-                        IdProducto = reader.GetInt32("IdProducto"),
-                        IdCategoria = reader.GetInt32("IdCategoria"),
-                        Nombre = reader.GetString("Nombre"),
-                        Descripcion = reader.IsDBNull(reader.GetOrdinal("Descripcion")) ? "" : reader.GetString("Descripcion"),
-                        Precio = reader.GetDecimal("Precio"),
-                        Stock = reader.GetInt32("Stock"),
-                        Estado = reader.GetBoolean("Estado")
+                        IdProducto = reader.GetInt32("id_Producto"),
+              
+                        Nombre = reader.GetString("nombre"),
+                        Descripcion = reader.IsDBNull(reader.GetOrdinal("descripcion")) ? "" : reader.GetString("descripcion"),
+                        Precio = reader.GetDecimal("precio"),
+                        Stock = reader.GetInt32("stock"),
+                      
                     };
                 }
             }
@@ -110,7 +110,7 @@ namespace Panaderia.Controllers
                 using (MySqlConnection conn = new MySqlConnection(connectionString))
                 {
                     conn.Open();
-                    string query = "UPDATE productos SET IdCategoria = @IdCategoria, Nombre = @Nombre, Descripcion = @Descripcion, Precio = @Precio, Stock = @Stock, Estado = @Estado WHERE IdProducto = @IdProducto";
+                    string query = "UPDATE Productos SET nombre = @Nombre, descripcion = @Descripcion, precio = @Precio, stock = @Stock WHERE id_Producto = @IdProducto";
                     MySqlCommand cmd = new MySqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@IdProducto", producto.IdProducto);
                     cmd.Parameters.AddWithValue("@IdCategoria", producto.IdCategoria);
@@ -118,7 +118,7 @@ namespace Panaderia.Controllers
                     cmd.Parameters.AddWithValue("@Descripcion", producto.Descripcion);
                     cmd.Parameters.AddWithValue("@Precio", producto.Precio);
                     cmd.Parameters.AddWithValue("@Stock", producto.Stock);
-                    cmd.Parameters.AddWithValue("@Estado", producto.Estado);
+                 
                     cmd.ExecuteNonQuery();
                 }
                 return RedirectToAction("ListarProductos");
@@ -132,7 +132,7 @@ namespace Panaderia.Controllers
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
                 conn.Open();
-                string query = "DELETE FROM productos WHERE IdProducto = @IdProducto";
+                string query = "DELETE FROM Productos WHERE id_producto = @IdProducto";
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@IdProducto", id);
                 cmd.ExecuteNonQuery();

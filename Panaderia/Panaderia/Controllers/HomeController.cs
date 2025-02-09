@@ -1,4 +1,8 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Web.Mvc;
+using MySql.Data.MySqlClient;
 using Panaderia.Models;
 namespace Panaderia.Controllers
 {
@@ -6,20 +10,44 @@ namespace Panaderia.Controllers
     {
         public ActionResult Index()
         {
-            DataBaseConnection db = new DataBaseConnection();
-            bool resultado = db.ProbarConexion();
+            List<Producto> productos = new List<Producto>();
 
-            if (resultado)
+            string connectionString = ConfigurationManager.ConnectionStrings["MySqlConnection"].ConnectionString;
+
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
-                ViewBag.Mensaje = "Conexión exitosa a MySQL.";
-            }
-            else
-            {
-                ViewBag.Mensaje = "Fallo en la conexión a MySQL.";
+                try
+                {
+                    connection.Open();
+
+                    string query = "SELECT id_producto, nombre, precio FROM Productos LIMIT 6";
+
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    {
+                        using (MySqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                productos.Add(new Producto
+                                {
+                                    IdProducto = Convert.ToInt32(reader["id_producto"]),
+                                    Nombre = reader["nombre"].ToString(),
+                                    Precio = Convert.ToDecimal(reader["precio"])
+                                });
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("", "Error al obtener los productos: " + ex.Message);
+                }
             }
 
-            return View();
+            return View(productos);
         }
+
+
 
         public ActionResult About()
         {
