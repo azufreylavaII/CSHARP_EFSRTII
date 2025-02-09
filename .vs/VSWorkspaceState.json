@@ -10,6 +10,6 @@
     "\\Panaderia\\Panaderia\\Views\\Listas",
     "\\Panaderia\\Panaderia\\Views\\Usuarios"
   ],
-  "SelectedNode": "\\Panaderia\\Panaderia\\Views\\Listas\\ListarProductos.cshtml",
+  "SelectedNode": "\\Panaderia\\Panaderia\\Controllers\\PedidosController.cs",
   "PreviewInSolutionExplorer": false
 }

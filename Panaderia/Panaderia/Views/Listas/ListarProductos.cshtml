@@ -2,37 +2,146 @@
 
 @{ ViewBag.Title = "Lista de Productos"; }
 
-<h2>Lista de Productos</h2>
+<div class="container-fluid py-4">
+    <!-- Header Section -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="display-6 mb-1">
+                <i class="bi bi-box-seam me-2"></i>Productos
+            </h2>
+            <p class="text-muted">Gestiona el catálogo de productos de la panadería</p>
+        </div>
+        <div class="d-flex gap-2">
+            <a href="@Url.Action("CrearProducto")" class="btn btn-primary">
+                <i class="bi bi-plus-lg me-2"></i>Nuevo Producto
+            </a>
+            <a href="@Url.Action("ListarUsuarios")" class="btn btn-outline-primary">
+                <i class="bi bi-people me-2"></i>Gestionar Usuarios
+            </a>
+        </div>
+    </div>
 
-<p>
-    <a href="@Url.Action("CrearProducto")" class="btn btn-primary">Crear Producto</a>
-    <a href="@Url.Action("ListarUsuarios")" class="btn btn-success">Lista de Usuarios</a>
-</p>
+    <!-- Table Section -->
+    <div class="card shadow-sm border-0">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Producto</th>
+                            <th>Descripción</th>
+                            <th>Precio</th>
+                            <th>Stock</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var producto in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <strong>@producto.Nombre</strong>
+                                </td>
+                                <td>
+                                    <span class="text-muted">@producto.Descripcion</span>
+                                </td>
+                                <td>
+                                    <span class="badge bg-success">S/. @producto.Precio.ToString("F2")</span>
+                                </td>
+                                <td>
+                                    @if (producto.Stock < 10)
+                                    {
+                                        <span class="badge bg-danger">@producto.Stock</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-info">@producto.Stock</span>
+                                    }
+                                </td>
+                                <td>
+                                    @if (producto.Estado)
+                                    {
+                                        <span class="badge bg-success">Activo</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-secondary">Inactivo</span>
+                                    }
+                                </td>
+                                <td>
+                                    <div class="btn-group">
+                                        <a href="@Url.Action("EditarProducto", new { id = producto.IdProducto })"
+                                           class="btn btn-sm btn-outline-primary">
+                                            <i class="bi bi-pencil"></i>
+                                        </a>
+                                        <a href="@Url.Action("EliminarProducto", new { id = producto.IdProducto })"
+                                           class="btn btn-sm btn-outline-danger"
+                                           onclick="return confirm('¿Estás seguro de eliminar este producto?');">
+                                            <i class="bi bi-trash"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Nombre</th>
-            <th>Descripción</th>
-            <th>Precio</th>
-            <th>Stock</th>
-            <th>Estado</th>
-            <th>Acciones</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var producto in Model)
-        {
-<tr>
-    <td>@producto.Nombre</td>
-    <td>@producto.Descripcion</td>
-    <td>@producto.Precio</td>
-    <td>@producto.Stock</td>
-    <td>@(producto.Estado ? "Activo" : "Inactivo")</td>
-    <td>
-        <a href="@Url.Action("EditarProducto", new { id = producto.IdProducto })" class="btn btn-warning">Editar</a>
-        <a href="@Url.Action("EliminarProducto", new { id = producto.IdProducto })" class="btn btn-danger" onclick="return confirm('¿Estás seguro de eliminar este producto?');">Eliminar</a>
-    </td>
-</tr>}
-    </tbody>
-</table>
+<style>
+    .avatar-circle {
+        width: 35px;
+        height: 35px;
+        background-color: #e9ecef;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        color: #6c757d;
+    }
+
+    .btn-group .btn {
+        padding: 0.25rem 0.5rem;
+    }
+
+    .card {
+        transition: all 0.2s ease-in-out;
+    }
+
+    .table th {
+        font-weight: 600;
+        color: #495057;
+    }
+
+    .badge {
+        font-weight: 500;
+        padding: 0.5em 0.8em;
+    }
+
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.25rem;
+    }
+
+    .display-6 {
+        font-weight: 600;
+        color: #212529;
+    }
+
+    .shadow-sm {
+        box-shadow: 0 .125rem .25rem rgba(0,0,0,.075) !important;
+    }
+
+    .table-responsive {
+        min-height: 400px;
+    }
+
+    tr:hover {
+        background-color: #f8f9fa;
+    }
+</style>
