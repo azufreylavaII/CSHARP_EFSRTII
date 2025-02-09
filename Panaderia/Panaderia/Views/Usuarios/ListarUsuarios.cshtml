@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Panaderia.Models.Usuario>
+
+@{
+    ViewBag.Title = "ListarUsuarios";
+}
+
+@{ ViewBag.Title = "Lista de Usuarios"; }
+
+<h2>Lista de Usuarios</h2>
+
+<a href="@Url.Action("CrearUsuario", "Usuarios")" class="btn btn-primary">Registrar Nuevo Usuario</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Teléfono</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var usuario in Model)
+        {
+<tr>
+    <td>@usuario.nombre</td>
+    <td>@usuario.correo</td>
+    <td>@usuario.telefono</td>
+    <td>
+        <a href="@Url.Action("EditarUsuario", "Usuarios", new { id = usuario.id_usuario })" class="btn btn-warning">Editar</a>
+        <a href="@Url.Action("EliminarUsuario", "Usuarios", new { id = usuario.id_usuario })" class="btn btn-danger" onclick="return confirm('¿Estás seguro de eliminar este usuario?');">Eliminar</a>
+    </td>
+</tr>}
+    </tbody>
+</table>

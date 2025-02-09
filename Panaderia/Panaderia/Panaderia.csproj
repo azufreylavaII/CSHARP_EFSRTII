@@ -270,6 +270,9 @@
     <Content Include="Views\Productos\Index.cshtml" />
     <Content Include="Views\Productos\VerCarrito.cshtml" />
     <Content Include="Views\Productos\ConfirmacionPedido.cshtml" />
+    <Content Include="Views\Usuarios\ListarUsuarios.cshtml" />
+    <Content Include="Views\Usuarios\CrearUsuario.cshtml" />
+    <Content Include="Views\Usuarios\EditarUsuario.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

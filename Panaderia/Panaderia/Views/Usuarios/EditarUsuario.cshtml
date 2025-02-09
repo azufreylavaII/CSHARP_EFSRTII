@@ -1,0 +1,39 @@
+﻿@model Panaderia.Models.Usuario
+
+@{
+    ViewBag.Title = "Editar Usuario";
+}
+
+<h2>Editar Usuario</h2>
+
+@using (Html.BeginForm("EditarUsuario", "Usuarios", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.id_usuario)
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.nombre)
+        @Html.TextBoxFor(m => m.nombre, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.correo)
+        @Html.TextBoxFor(m => m.correo, new { @class = "form-control", @readonly = "readonly" }) <!-- No se debería permitir cambiar el correo -->
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.direccion)
+        @Html.TextBoxFor(m => m.direccion, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.telefono)
+        @Html.TextBoxFor(m => m.telefono, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.rol)
+        @Html.DropDownListFor(m => m.rol, new SelectList(new[] { "Cliente", "Administrador" }), "Selecciona un rol", new { @class = "form-control" })
+    </div>
+
+    <button type="submit" class="btn btn-success">Guardar Cambios</button>
+}

@@ -5,6 +5,8 @@ using MySql.Data.MySqlClient;
 using Panaderia.Models;
 using BCrypt.Net;
 using Org.BouncyCastle.Crypto.Generators;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Panaderia.Controllers
 {
@@ -12,6 +14,137 @@ namespace Panaderia.Controllers
     {
         private string connectionString = ConfigurationManager.ConnectionStrings["MySqlConnection"].ConnectionString;
 
+       
+
+        // Listar usuarios
+        public ActionResult ListarUsuarios()
+        {
+            List<Usuario> usuarios = new List<Usuario>();
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "SELECT id_usuario, nombre, correo, telefono FROM Usuarios;";
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    usuarios.Add(new Usuario
+                    {
+                        id_usuario = reader.GetInt32("id_usuario"),
+                        nombre = reader.GetString("nombre"),
+                        correo = reader.GetString("correo"),
+                        telefono = reader.IsDBNull(reader.GetOrdinal("telefono")) ? "" : reader.GetString("telefono"),
+                    });
+                }
+            }
+
+            return View(usuarios);
+        }
+
+        // Crear usuario
+        public ActionResult CrearUsuario()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CrearUsuario(Usuario usuario)
+        {
+            if (ModelState.IsValid)
+            {
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
+                {
+                    conn.Open();
+                    string query = "INSERT INTO Usuarios (nombre, correo, contrasena, direccion, telefono, rol) VALUES (@Nombre, @Correo, @Contraseña,  @Direccion,  @Telefono, @Rol)";
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+               
+                    cmd.Parameters.AddWithValue("@Nombre", usuario.nombre);
+                    cmd.Parameters.AddWithValue("@Correo", usuario.correo);
+                    cmd.Parameters.AddWithValue("@Contraseña", usuario.contrasena);
+                    cmd.Parameters.AddWithValue("@Direccion", usuario.direccion);
+                    cmd.Parameters.AddWithValue("@Telefono", usuario.telefono);
+                    cmd.Parameters.AddWithValue("@Rol", usuario.rol);
+
+                    cmd.ExecuteNonQuery();
+                }
+                return RedirectToAction("ListarUsuarios");
+            }
+            return View(usuario);
+        }
+
+        // Editar usuario
+        public ActionResult EditarUsuario(int id)
+        {
+            Usuario usuario = null;
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "SELECT id_usuario, nombre, correo, direccion, telefono FROM Usuarios WHERE id_usuario = @IdUsuario";
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@IdUsuario", id);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    usuario = new Usuario
+                    {
+                        id_usuario = reader.GetInt32("id_usuario"),
+                        nombre = reader.GetString("nombre"),
+                        correo = reader.GetString("correo"),
+                        direccion = reader.GetString("direccion"),
+                        telefono = reader.IsDBNull(reader.GetOrdinal("telefono")) ? "" : reader.GetString("telefono"),
+                  
+                    };
+                }
+            }
+
+            if (usuario == null)
+                return HttpNotFound();
+
+            return View(usuario);
+        }
+
+        [HttpPost]
+        public ActionResult EditarUsuario(Usuario usuario)
+        {
+            if (ModelState.IsValid)
+            {
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
+                {
+                    conn.Open();
+                    string query = "UPDATE Usuarios SET nombre = @Nombre, correo = @Correo, direccion = @Direccion, telefono = @Telefono, rol = @Rol WHERE id_usuario = @IdUsuario";
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@IdUsuario", usuario.id_usuario);
+                    cmd.Parameters.AddWithValue("@Nombre", usuario.nombre);
+                    cmd.Parameters.AddWithValue("@Correo", usuario.correo);
+                    cmd.Parameters.AddWithValue("@Direccion", usuario.direccion);
+                    cmd.Parameters.AddWithValue("@Telefono", usuario.telefono);
+                    cmd.Parameters.AddWithValue("@Rol", usuario.rol);
+
+                    cmd.ExecuteNonQuery();
+                }
+                return RedirectToAction("ListarUsuarios");
+            }
+            return View(usuario);
+        }
+
+        // Eliminar usuario
+        public ActionResult EliminarUsuario(int id)
+        {
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "DELETE FROM Usuarios WHERE id_usuario = @IdUsuario";
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@IdUsuario", id);
+                cmd.ExecuteNonQuery();
+            }
+
+            return RedirectToAction("ListarUsuarios");
+        }
         // Vista para el registro
         public ActionResult Registrar()
         {
