@@ -18,7 +18,7 @@ namespace Panaderia.Controllers
             // Verificar si el usuario tiene rol de "Admin"
             if (Session["Rol"] == null || Session["Rol"].ToString() != "Admin")
             {
-                return RedirectToAction("SinPermiso", "Home"); // Redirige a una vista de error
+                return RedirectToAction("Login", "Usuarios"); // Redirige a una vista de error
             }
 
             var productos = new List<Producto>();
@@ -48,12 +48,12 @@ namespace Panaderia.Controllers
                         }
                     }
 
-                    ViewBag.Mensaje = "Productos cargados correctamente."; // ✅ Si llega aquí, la consulta funcionó
+                    ViewBag.Mensaje = "Productos cargados correctamente."; //
                 }
             }
             catch (Exception ex)
             {
-                ViewBag.ErrorMessage = "Error al cargar los productos: " + ex.Message; // ✅ Mostrar error en la vista
+                ViewBag.ErrorMessage = "Error al cargar los productos: " + ex.Message; 
             }
 
             return View(productos);  // Devuelve la vista con los datos o vacía si hubo error
