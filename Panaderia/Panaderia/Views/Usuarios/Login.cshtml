@@ -1,0 +1,28 @@
+﻿@model Panaderia.Models.Usuario
+
+@{
+    ViewBag.Title = "Login";
+}
+
+
+<h2>Iniciar Sesión</h2>
+
+@if (ViewBag.Mensaje != null)
+{
+    <div class="alert alert-danger">
+        @ViewBag.Mensaje
+    </div>
+}
+
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(model => model.correo)
+    @Html.TextBoxFor(model => model.correo)
+    <br />
+
+    @Html.LabelFor(model => model.contrasena)
+    @Html.PasswordFor(model => model.contrasena)
+    <br />
+
+    <button type="submit">Iniciar Sesión</button>
+}

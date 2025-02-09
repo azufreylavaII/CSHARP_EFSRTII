@@ -158,13 +158,13 @@ namespace Panaderia.Controllers
                 {
                     usuarios.Add(new Usuario
                     {
-                        IdUsuario = reader.GetInt32("id_Usuario"),
-                        Nombre = reader.GetString("Nombre"),
-                        Correo = reader.GetString("Correo"),
-                        Direccion = reader.IsDBNull(reader.GetOrdinal("direccion")) ? "" : reader.GetString("direccion"),
-                        Telefono = reader.IsDBNull(reader.GetOrdinal("telefono")) ? "" : reader.GetString("telefono"),
-                        Rol = reader.IsDBNull(reader.GetOrdinal("Rol")) ? "Sin rol" : reader.GetString("Rol"),
-                   
+                        id_usuario = reader.GetInt32("id_Usuario"),
+                        nombre = reader.GetString("Nombre"),
+                        correo = reader.GetString("Correo"),
+                        direccion = reader.IsDBNull(reader.GetOrdinal("direccion")) ? "" : reader.GetString("direccion"),
+                        telefono = reader.IsDBNull(reader.GetOrdinal("telefono")) ? "" : reader.GetString("telefono"),
+                        rol = reader.IsDBNull(reader.GetOrdinal("Rol")) ? "Sin rol" : reader.GetString("Rol"),
+
                     });
                 }
             }
@@ -187,13 +187,13 @@ namespace Panaderia.Controllers
                     conn.Open();
                     string query = "INSERT INTO usuarios (Nombre, Correo, Contraseña, Direccion, Telefono, Rol, FechaRegistro) VALUES (@Nombre, @Correo, @Contraseña, @Direccion, @Telefono, @Rol, @FechaRegistro)";
                     MySqlCommand cmd = new MySqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@Nombre", usuario.Nombre);
-                    cmd.Parameters.AddWithValue("@Correo", usuario.Correo);
-                    cmd.Parameters.AddWithValue("@Contraseña", usuario.Contraseña);
-                    cmd.Parameters.AddWithValue("@Direccion", usuario.Direccion ?? string.Empty);
-                    cmd.Parameters.AddWithValue("@Telefono", usuario.Telefono ?? string.Empty);
-                    cmd.Parameters.AddWithValue("@Rol", usuario.Rol ?? "Sin rol");
-                    cmd.Parameters.AddWithValue("@FechaRegistro", usuario.FechaRegistro);
+                    cmd.Parameters.AddWithValue("@Nombre", usuario.nombre);
+                    cmd.Parameters.AddWithValue("@Correo", usuario.correo);
+                    cmd.Parameters.AddWithValue("@Contraseña", usuario.contrasena);
+                    cmd.Parameters.AddWithValue("@Direccion", usuario.direccion ?? string.Empty);
+                    cmd.Parameters.AddWithValue("@Telefono", usuario.telefono ?? string.Empty);
+                    cmd.Parameters.AddWithValue("@Rol", usuario.rol ?? "Sin rol");
+                    cmd.Parameters.AddWithValue("@FechaRegistro", usuario.fecha_registro);
                     cmd.ExecuteNonQuery();
                 }
                 return RedirectToAction("ListarUsuarios");
@@ -218,14 +218,14 @@ namespace Panaderia.Controllers
                 {
                     usuario = new Usuario
                     {
-                        IdUsuario = reader.GetInt32("IdUsuario"),
-                        Nombre = reader.GetString("Nombre"),
-                        Correo = reader.GetString("Correo"),
-                        Contraseña = reader.GetString("Contraseña"),
-                        Direccion = reader.IsDBNull(reader.GetOrdinal("Direccion")) ? "" : reader.GetString("Direccion"),
-                        Telefono = reader.IsDBNull(reader.GetOrdinal("Telefono")) ? "" : reader.GetString("Telefono"),
-                        Rol = reader.IsDBNull(reader.GetOrdinal("Rol")) ? "Sin rol" : reader.GetString("Rol"),
-                        FechaRegistro = reader.GetDateTime("FechaRegistro")
+                        id_usuario = reader.GetInt32("IdUsuario"),
+                        nombre = reader.GetString("Nombre"),
+                        correo = reader.GetString("Correo"),
+                        contrasena = reader.GetString("Contraseña"),
+                        direccion = reader.IsDBNull(reader.GetOrdinal("Direccion")) ? "" : reader.GetString("Direccion"),
+                        telefono = reader.IsDBNull(reader.GetOrdinal("Telefono")) ? "" : reader.GetString("Telefono"),
+                        rol = reader.IsDBNull(reader.GetOrdinal("Rol")) ? "Sin rol" : reader.GetString("Rol"),
+                        fecha_registro = reader.GetDateTime("FechaRegistro")
                     };
                 }
             }
@@ -246,13 +246,13 @@ namespace Panaderia.Controllers
                     conn.Open();
                     string query = "UPDATE usuarios SET Nombre = @Nombre, Correo = @Correo, Contraseña = @Contraseña, Direccion = @Direccion, Telefono = @Telefono, Rol = @Rol WHERE IdUsuario = @IdUsuario";
                     MySqlCommand cmd = new MySqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@IdUsuario", usuario.IdUsuario);
-                    cmd.Parameters.AddWithValue("@Nombre", usuario.Nombre);
-                    cmd.Parameters.AddWithValue("@Correo", usuario.Correo);
-                    cmd.Parameters.AddWithValue("@Contraseña", usuario.Contraseña);
-                    cmd.Parameters.AddWithValue("@Direccion", usuario.Direccion ?? string.Empty);
-                    cmd.Parameters.AddWithValue("@Telefono", usuario.Telefono ?? string.Empty);
-                    cmd.Parameters.AddWithValue("@Rol", usuario.Rol ?? "Sin rol");
+                    cmd.Parameters.AddWithValue("@IdUsuario", usuario.id_usuario);
+                    cmd.Parameters.AddWithValue("@Nombre", usuario.nombre);
+                    cmd.Parameters.AddWithValue("@Correo", usuario.correo);
+                    cmd.Parameters.AddWithValue("@Contraseña", usuario.contrasena);
+                    cmd.Parameters.AddWithValue("@Direccion", usuario.direccion ?? string.Empty);
+                    cmd.Parameters.AddWithValue("@Telefono", usuario.telefono ?? string.Empty);
+                    cmd.Parameters.AddWithValue("@Rol", usuario.rol ?? "Sin rol");
                     cmd.ExecuteNonQuery();
                 }
                 return RedirectToAction("ListarUsuarios");

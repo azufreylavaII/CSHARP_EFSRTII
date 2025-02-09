@@ -1,0 +1,35 @@
+﻿@model Panaderia.Models.Usuario
+
+<h2>Registrar Usuario</h2>
+
+@if (ViewBag.Mensaje != null)
+{
+    <div class="alert alert-success">
+        @ViewBag.Mensaje
+    </div>
+}
+
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(model => model.nombre)
+    @Html.TextBoxFor(model => model.nombre)
+    <br />
+
+    @Html.LabelFor(model => model.correo)
+    @Html.TextBoxFor(model => model.correo)
+    <br />
+
+    @Html.LabelFor(model => model.contrasena)
+    @Html.PasswordFor(model => model.contrasena)
+    <br />
+
+    @Html.LabelFor(model => model.direccion)
+    @Html.TextAreaFor(model => model.direccion)
+    <br />
+
+    @Html.LabelFor(model => model.telefono)
+    @Html.TextBoxFor(model => model.telefono)
+    <br />
+
+    <button type="submit">Registrar</button>
+}

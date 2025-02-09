@@ -6,34 +6,29 @@ using System.Web;
 
 namespace Panaderia.Models
 {
-    public class Usuario
-    {
-        [Key]
-        public int IdUsuario { get; set; }
+        public class Usuario
+        {
+            [Key]
+            public int id_usuario { get; set; } // ID autoincremental
 
-        [Required]
-        [MaxLength(100)]
-        public string Nombre { get; set; }
+            [Required]
+            public string nombre { get; set; } // Nombre del usuario
 
-        [Required]
-        [MaxLength(100)]
-        public string Correo { get; set; }
+            [Required, EmailAddress]
+            public string correo { get; set; } // Correo único
 
-        [Required]
-        [MaxLength(255)]
-        public string Contraseña { get; set; }
+            [Required]
+            public string contrasena { get; set; } // Contraseña (debería estar hasheada)
 
-        public string Direccion { get; set; }
+            public string direccion { get; set; } // Dirección del usuario
 
-        [MaxLength(20)]
-        public string Telefono { get; set; }
+            public string telefono { get; set; } // Teléfono del usuario
 
-        [MaxLength(100)]
-        public string Rol { get; set; }
+            public string rol { get; set; } // Rol (admin, cliente, etc.)
 
-        [MaxLength(255)]
-        public string ImagenUrl { get; set; }
+            public string imagen_url { get; set; } // URL de la imagen de perfil
 
-        public DateTime FechaRegistro { get; set; }
+            public DateTime fecha_registro { get; set; } = DateTime.Now; // Fecha de registro
+        }
     }
-}
+

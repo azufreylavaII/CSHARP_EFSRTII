@@ -3,10 +3,11 @@
     "",
     "\\Panaderia",
     "\\Panaderia\\Panaderia",
+    "\\Panaderia\\Panaderia\\Controllers",
     "\\Panaderia\\Panaderia\\Models",
     "\\Panaderia\\Panaderia\\Views",
-    "\\Panaderia\\Panaderia\\Views\\Home"
+    "\\Panaderia\\Panaderia\\Views\\Usuarios"
   ],
-  "SelectedNode": "\\Panaderia\\Panaderia\\Views\\Home\\Index.cshtml",
+  "SelectedNode": "\\Panaderia\\Panaderia\\Controllers\\ListasController.cs",
   "PreviewInSolutionExplorer": false
 }
