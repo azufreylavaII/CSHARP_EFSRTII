@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Panaderia.Models.Usuario>
+@{
+    ViewBag.Title = "Mi Perfil";
+}
+
+
+
+
+
+<h2>Mi Perfil</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Teléfono</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var usuario in Model)
+        {
+            <tr>
+                <td>@usuario.nombre</td>
+                <td>@usuario.correo</td>
+                <td>@usuario.telefono</td>
+                
+            </tr>
+}
+    </tbody>
+</table>
+
+<!-- Botón para cerrar sesión -->
+<div>
+    @using (Html.BeginForm("Logout", "Usuarios", FormMethod.Post))
+    {
+        <button type="submit" class="btn btn-danger">Cerrar Sesión</button>
+    }
+</div>

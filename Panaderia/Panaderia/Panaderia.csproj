@@ -273,6 +273,7 @@
     <Content Include="Views\Usuarios\ListarUsuarios.cshtml" />
     <Content Include="Views\Usuarios\CrearUsuario.cshtml" />
     <Content Include="Views\Usuarios\EditarUsuario.cshtml" />
+    <Content Include="Views\Usuarios\MiPerfil.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

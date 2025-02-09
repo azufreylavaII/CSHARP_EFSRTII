@@ -316,5 +316,45 @@ namespace Panaderia.Controllers
             Session["Rol"] = null;
             return RedirectToAction("Login");
         }
+
+
+        // Mostrar los datos del usuario actual
+        public ActionResult MiPerfil()
+        {
+            // Verificar si el usuario está autenticado
+            if (Session["UsuarioID"] == null)
+            {
+                return RedirectToAction("Login");
+            }
+
+            int usuarioId = (int)Session["UsuarioID"];
+            List<Usuario> usuarios = new List<Usuario>();
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "SELECT id_usuario, nombre, correo, direccion, telefono, rol FROM Usuarios WHERE id_usuario = @IdUsuario";
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@IdUsuario", usuarioId);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    usuarios.Add(new Usuario
+                    {
+                        id_usuario = reader.GetInt32("id_usuario"),
+                        nombre = reader.GetString("nombre"),
+                        correo = reader.GetString("correo"),
+                        direccion = reader.GetString("direccion"),
+                        telefono = reader.IsDBNull(reader.GetOrdinal("telefono")) ? "" : reader.GetString("telefono"),
+                       
+                    });
+                }
+            }
+
+            
+
+            return View(usuarios);
+        }
     }
 }
